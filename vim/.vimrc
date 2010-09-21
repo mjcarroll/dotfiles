@@ -66,8 +66,6 @@ let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$']
 " Rainbow
 nmap <leader>R :RainbowParenthesisToggle<CR>
 
-let g:GetLatestVimScripts=allowautoinstall=1
-
 " Use the damn hjkl keys
 nnoremap <up> <nop>
 nnoremap <down> <nop>
