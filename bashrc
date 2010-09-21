@@ -23,12 +23,10 @@ shopt -s hostcomplete
 
 alias df='df -H'
 alias du='du -H'
-alias ls='ls -hF --color=tty'
 alias dir='ls --color=auto --format=vertical'
 alias vdir='ls --color=auto --format=long'
 alias ll='ls -l'
 alias la='ls -A'
-alias l='ls -CF'
 
 export EDITOR='vim'
 export VISUAL=$EDITOR

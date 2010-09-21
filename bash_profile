@@ -5,12 +5,10 @@ fi
 # Aliases
 alias df='df -H'
 alias du='du -H'
-alias ls='ls -hF'
 alias dir='ls'
 alias vdir='ls'
 alias ll='ls -l'
 alias la='ls -la'
-alias l='ls -CF'
 
 # Shell options
 shopt -s histappend
