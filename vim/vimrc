@@ -61,10 +61,12 @@ call pathogen#runtime_append_all_bundles()
 
 " NERD Tree
 map <F2> :NERDTreeToggle<cr>
+map <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$']
 
 " Rainbow
-nmap <leader>R :RainbowParenthesisToggle<CR>
+nmap <leader>R :RainbowParenthesesToggle<CR>
+
 
 " Use the damn hjkl keys
 nnoremap <up> <nop>
