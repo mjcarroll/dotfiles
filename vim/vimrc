@@ -67,6 +67,11 @@ let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$']
 " Rainbow
 nmap <leader>R :RainbowParenthesesToggle<CR>
 
+" Yankring
+let g:yankring_history_dir = '~/.vim/tmp/'
+nmap <leader>y :YRShow<cr>
+nnoremap <silent> <F3> :YRShow<cr>
+inoremap <silent> <F3> <ESC>:YRShow<cr>
 
 " Use the damn hjkl keys
 nnoremap <up> <nop>
