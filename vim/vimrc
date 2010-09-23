@@ -67,6 +67,16 @@ let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$']
 " Rainbow
 nmap <leader>R :RainbowParenthesesToggle<CR>
 
+" CTAGS
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+let Tlist_WinWidth = 50
+map <F4> :TListToggle<cr>
+map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+[ --fields=+iaS --extra=+q .<cr>
+
+inoremap <F1> <ESC>:set invfullscreen<CR>a
+nnoremap <F1> :set invfullscreen<CR>
+vnoremap <F1> :set invfullscreen<CR>
+
 " Yankring
 let g:yankring_history_dir = '~/.vim/tmp/'
 nmap <leader>y :YRShow<cr>
@@ -116,6 +126,7 @@ inoremap jj <ESC>
 if has('gui_running')
     if has('mac')
         set guifont=Menlo:h12
+        set fuoptions=maxvert,maxhorz
     endif
     colorscheme molokai
     set background=dark
