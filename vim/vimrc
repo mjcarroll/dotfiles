@@ -120,7 +120,6 @@ au FocusLost * :wa
 cmap w!! w !sudo tee % >/dev/null
 
 " Faster ESC
-inoremap <Esc> <nop>
 inoremap jj <ESC>
 
 if has('gui_running')
