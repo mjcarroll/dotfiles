@@ -1,12 +1,22 @@
 if [[ $- != *i* ]]; then
   return
 fi
+platform = 'unknown'
+unamestr = `uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+    platform = 'linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    platform = 'mac'
+fi
 
 # Aliases
 alias df='df -H'
 alias du='du -H'
 alias dir='ls'
 alias vdir='ls'
+if[[ $platform = 'linux' ]]; then
+    alias ls='ls --color=auto'
+fi
 alias ll='ls -l'
 alias la='ls -la'
 
