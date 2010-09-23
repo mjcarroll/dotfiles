@@ -109,7 +109,9 @@ inoremap <Esc> <nop>
 inoremap jj <ESC>
 
 if has('gui_running')
-    set guifont=Menlo:h12
+    if has('mac')
+        set guifont=Menlo:h12
+    endif
     colorscheme molokai
     set background=dark
 
