@@ -10,6 +10,12 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
     platform='mac'
 fi
 
+shopt -u mailwarn
+unset MAILCHECK
+
+export EDITOR='vim'
+export VISUAL=$EDITOR
+
 # Aliases
 alias df='df -H'
 alias du='du -H'
@@ -17,6 +23,8 @@ alias dir='ls'
 alias vdir='ls'
 if [[ $platform == 'linux' ]]; then
     alias ls='ls --color=auto'
+    alias dir='ls --color=auto --format=vertical'
+    alias vdir='ls --color=auto --format=long'
 fi
 alias ll='ls -l'
 alias la='ls -la'
@@ -26,6 +34,9 @@ alias vimdiff='vim -g -d'
 shopt -s histappend
 set +o histexpand
 shopt -s cdspell
+shopt -s cmdhist
+shopt -s histreedit
+shopt -s hostcomplete
 shopt -s cdable_vars
 shopt -s no_empty_cmd_completion
 shopt -s extglob
