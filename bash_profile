@@ -13,6 +13,12 @@ fi
 shopt -u mailwarn
 unset MAILCHECK
 
+# Without Clock
+export PS1="[\u@\[\e[32;1m\]\H \[\e[0m\]\w]\$ "
+
+# With Clock
+# PS1="\[\033[36m\][\t] \[\033[1;33m\]\u\[\033[0m\]@\h:\[\033[36m\][\w]:\[\033[0m\] "
+
 export EDITOR='vim'
 export VISUAL=$EDITOR
 
