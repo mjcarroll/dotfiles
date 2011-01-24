@@ -70,7 +70,7 @@ nmap <leader>R :RainbowParenthesesToggle<CR>
 " CTAGS
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_WinWidth = 50
-map <F4> :TListToggle<cr>
+map <F4> :TlistToggle<cr>
 map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+[ --fields=+iaS --extra=+q .<cr>
 
 inoremap <F1> <ESC>:set invfullscreen<CR>a
@@ -114,7 +114,7 @@ vnoremap <F1> <ESC>
 nnoremap ; :
 
 " Save on focus lost
-au FocusLost * :wa
+" au FocusLost * :wa
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null

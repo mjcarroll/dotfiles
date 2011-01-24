@@ -30,3 +30,5 @@ alias la='ls -A'
 
 export EDITOR='vim'
 export VISUAL=$EDITOR
+
+source ~/.bash_profile
