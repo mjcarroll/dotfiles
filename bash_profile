@@ -28,6 +28,7 @@ export VISUAL=$EDITOR
 # Shell options
 shopt -s histappend
 set +o histexpand
+set -o vi
 shopt -s cdspell
 shopt -s cmdhist
 shopt -s histreedit
