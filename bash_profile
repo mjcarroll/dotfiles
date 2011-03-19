@@ -72,7 +72,7 @@ complete -A shopt shopt
 complete -A directory mkdir rmdir
 complete -A directory -o default cd
 
-export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/local/bin:/usr/local/bin:$PATH"
 
 # Functions
 extract () 

@@ -31,8 +31,8 @@ set laststatus=2
 set undofile
 
 " Backups
-set backupdir=~/.vim/tmp/backup//
-set directory=~/.vim/tmp/swap//
+set backupdir=~/.vim/tmp/backup/
+set directory=~/.vim/tmp/swap/
 set backup
 
 " Leader
