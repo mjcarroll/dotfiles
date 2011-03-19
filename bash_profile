@@ -8,6 +8,9 @@ if [[ "$unamestr" == 'Linux' ]]; then
     platform='linux'
 elif [[ "$unamestr" == 'Darwin' ]]; then
     platform='mac'
+    export CPATH=/opt/local/include
+    export LIBRARY_PATH=/opt/local/lib
+    export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/opt/local/lib
 fi
 
 shopt -u mailwarn

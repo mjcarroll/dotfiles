@@ -31,8 +31,5 @@ alias la='ls -A'
 export EDITOR='vim'
 export VISUAL=$EDITOR
 
-export CPATH=/opt/local/include
-export LIBRARY_PATH=/opt/local/lib
-export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/opt/local/lib
-
+source ~/.bash_aliases
 source ~/.bash_profile
