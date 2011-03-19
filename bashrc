@@ -31,5 +31,6 @@ alias la='ls -A'
 export EDITOR='vim'
 export VISUAL=$EDITOR
 
+source ~/devel/lib/dotfiles/rosrc
 source ~/.bash_aliases
 source ~/.bash_profile

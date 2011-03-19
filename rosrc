@@ -1,0 +1,5 @@
+alias rosenv='env | grep ROS'
+alias rosdiamondback='source /opt/ros/diamondback/setup.bash'
+alias roslocal='source ~/devel/ros/setup.bash'
+alias rviz='rosrun rviz rviz'
+alias xacro='rosrun xacro xacro.py'
