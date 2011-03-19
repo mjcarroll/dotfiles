@@ -28,6 +28,8 @@ set ruler
 set backspace=indent,eol,start
 set relativenumber
 set laststatus=2
+" Undo File Stuff
+set undodir=~/.vim/tmp/undodir
 set undofile
 
 " Backups

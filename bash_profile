@@ -22,20 +22,6 @@ export PS1="[\u@\[\e[32;1m\]\H \[\e[0m\]\w]\$ "
 export EDITOR='vim'
 export VISUAL=$EDITOR
 
-# Aliases
-alias df='df -H'
-alias du='du -H'
-alias dir='ls'
-alias vdir='ls'
-if [[ $platform == 'linux' ]]; then
-    alias ls='ls --color=auto'
-    alias dir='ls --color=auto --format=vertical'
-    alias vdir='ls --color=auto --format=long'
-fi
-alias ll='ls -l'
-alias la='ls -la'
-alias vimdiff='vim -g -d'
-
 # Shell options
 shopt -s histappend
 set +o histexpand
@@ -59,6 +45,10 @@ export PAGER="less"
 export CLICOLOR="yes"
 
 # Bash Completion
+if [ -f /etc/bash_completion ]; then
+. /etc/bash_completion
+fi
+
 shopt -s extglob
 complete -cf sudo
 complete -A hostname rsh rcp telnet rlogin r ftp ping disk
