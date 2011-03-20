@@ -26,13 +26,19 @@ set cursorline
 set ttyfast
 set ruler
 set backspace=indent,eol,start
-set relativenumber
 set laststatus=2
-set undofile
+if exists("&relativenumber")
+    set relativenumber
+endif
+" Undo File Stuff
+if exists("&undofile")
+    set undodir=~/.vim/tmp/undodir
+    set undofile
+endif
 
 " Backups
-set backupdir=~/.vim/tmp/backup//
-set directory=~/.vim/tmp/swap//
+set backupdir=~/.vim/tmp/backup/
+set directory=~/.vim/tmp/swap/
 set backup
 
 " Leader
@@ -70,7 +76,7 @@ nmap <leader>R :RainbowParenthesesToggle<CR>
 " CTAGS
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_WinWidth = 50
-map <F4> :TListToggle<cr>
+map <F4> :TlistToggle<cr>
 map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+[ --fields=+iaS --extra=+q .<cr>
 
 inoremap <F1> <ESC>:set invfullscreen<CR>a
@@ -88,8 +94,6 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-
-" And make them fucking work, too.
 nnoremap j gj
 nnoremap k gk
 
@@ -104,7 +108,9 @@ map <leader>w <C-w>v<C-w>l
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
+if exists("&colorcolumn")
+    set colorcolumn=85
+endif
 
 " Disable the help menu
 inoremap <F1> <ESC>
@@ -112,9 +118,6 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 nnoremap ; :
-
-" Save on focus lost
-au FocusLost * :wa
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
@@ -137,6 +140,5 @@ if has('gui_running')
     set go-=R
 
     let g:sparkupExecuteMapping = '<D-e>'
-
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif

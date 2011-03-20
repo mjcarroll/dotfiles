@@ -8,6 +8,9 @@ if [[ "$unamestr" == 'Linux' ]]; then
     platform='linux'
 elif [[ "$unamestr" == 'Darwin' ]]; then
     platform='mac'
+    export CPATH=/opt/local/include
+    export LIBRARY_PATH=/opt/local/lib
+    export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/opt/local/lib
 fi
 
 shopt -u mailwarn
@@ -22,26 +25,10 @@ export PS1="[\u@\[\e[32;1m\]\H \[\e[0m\]\w]\$ "
 export EDITOR='vim'
 export VISUAL=$EDITOR
 
-# Aliases
-alias df='df -H'
-alias du='du -H'
-alias dir='ls'
-alias vdir='ls'
-if [[ $platform == 'linux' ]]; then
-    alias ls='ls --color=auto'
-    alias dir='ls --color=auto --format=vertical'
-    alias vdir='ls --color=auto --format=long'
-fi
-alias ll='ls -l'
-alias la='ls -la'
-alias vimdiff='vim -g -d'
-alias sshhome='screen -t autrailer ssh mjcarroll@autrailer.com'
-alias sshschool='screen -t ausparc.com ssh mjcarroll@ausparc.com'
-alias apt-get='sudo apt-get'
-
 # Shell options
 shopt -s histappend
 set +o histexpand
+set -o vi
 shopt -s cdspell
 shopt -s cmdhist
 shopt -s histreedit
@@ -64,6 +51,8 @@ export CLICOLOR="yes"
 # Bash Completion
 if [[ $platform == 'linux' ]]; then
     source /etc/bash_completion    
+    if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
 fi
 
 shopt -s extglob
@@ -80,7 +69,7 @@ complete -A shopt shopt
 complete -A directory mkdir rmdir
 complete -A directory -o default cd
 
-export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/local/bin:/usr/local/bin:$PATH"
 
 # Functions
 extract () 
