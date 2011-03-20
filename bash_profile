@@ -35,6 +35,9 @@ fi
 alias ll='ls -l'
 alias la='ls -la'
 alias vimdiff='vim -g -d'
+alias sshhome='screen -t autrailer ssh mjcarroll@autrailer.com'
+alias sshschool='screen -t ausparc.com ssh mjcarroll@ausparc.com'
+alias apt-get='sudo apt-get'
 
 # Shell options
 shopt -s histappend
@@ -59,8 +62,13 @@ export PAGER="less"
 export CLICOLOR="yes"
 
 # Bash Completion
+if [[ $platform == 'linux' ]]; then
+    source /etc/bash_completion    
+fi
+
 shopt -s extglob
 complete -cf sudo
+
 complete -A hostname rsh rcp telnet rlogin r ftp ping disk
 complete -A variable export local readonly unset
 complete -A alias alias unalias
