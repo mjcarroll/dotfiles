@@ -4,6 +4,7 @@ mkdir -p ~/devel/lib
 mkdir -p ~/devel/bin
 mkdir -p ~/devel/src
 
+ln -s "$HOME/devel/lib/dotfiles/bashrc" "$HOME/.bashrc"
 ln -s "$HOME/devel/lib/dotfiles/bash_aliases" "$HOME/.bash_aliases"
 ln -s "$HOME/devel/lib/dotfiles/vim/vim" "$HOME/.vim"
 ln -s "$HOME/devel/lib/dotfiles/vim/vimrc" "$HOME/.vimrc"
