@@ -52,7 +52,8 @@ export CLICOLOR="yes"
 if [[ $platform == 'linux' ]]; then
     source /etc/bash_completion    
     if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+        . /etc/bash_completion
+    fi
 fi
 
 shopt -s extglob
@@ -102,3 +103,4 @@ function ii()   # Get current host related info.
     echo -e "\n${RED}Current date :$NC " ; date
     echo -e "\n${RED}Machine stats :$NC " ; uptime
 } 
+
