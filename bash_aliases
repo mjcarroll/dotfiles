@@ -1,5 +1,6 @@
 alias df='df -H'
 alias du='du -H'
+alias duh='du -chs ./*'
 alias dir='ls'
 alias vdir='ls'
 if [[ $platform == 'linux' ]]; then
