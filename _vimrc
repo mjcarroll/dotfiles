@@ -17,16 +17,14 @@ set encoding=utf-8
 set scrolloff=3
 set autoindent
 set showmode
-set showcmd
 set hidden
 set wildmenu
 set wildmode=list:longest
+set wildignore+=*.o,*.obj,.git,*.pyc
 set visualbell
 set cursorline
 set ttyfast
-set ruler
 set backspace=indent,eol,start
-set laststatus=2
 set title
 if exists("&relativenumber")
     set relativenumber
@@ -34,6 +32,21 @@ endif
 
 set completeopt=menuone,longest,preview
 set pumheight=6
+
+set ls=2
+set vb t_vb=
+set confirm
+set showcmd
+set report=0
+set shortmess+=a
+set ruler
+set laststatus=2
+set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)%{fugitive#statusline()}
+
+set scrolloff=3
+set matchpairs+=<:>
+set foldmethod=indent
+set foldlevel=99
 
 " Undo File Stuff
 if exists("&undofile")
@@ -69,6 +82,7 @@ colorscheme delek
 
 " Use Pathogen to load bundles
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
 " NERD Tree
 map <leader>n :NERDTreeToggle<cr>
@@ -84,14 +98,13 @@ nmap <leader>y :YRShow<cr>
 " Tasklist
 map <leader>td <Plug>TaskList
 
-" Command-t
+" Command-t:
 map <leader>f :CommandT<CR>
 
-" Use the damn hjkl keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+" Quickfix:
+nmap <leader>c :copen<CR>
+nmap <leader>cc :cclose<CR>
+
 nnoremap j gj
 nnoremap k gk
 
@@ -100,7 +113,7 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map <leader>w <C-w>v<C-w>l
+
 
 " Might as well make capital W do the same thing.
 command! W :w
@@ -118,25 +131,12 @@ if exists("&colorcolumn")
     set colorcolumn=85
 endif
 
-" Disable the help menu
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
 nnoremap ; :
 
 " Faster ESC
 inoremap jj <ESC>
 
-set ls=2
-set vb t_vb=
-set confirm
-set showcmd
-set report=0
-set shortmess+=a
-set ruler
-set laststatus=2
-set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)%{fugitive#statusline()}
+
 
 if has('gui_running')
     if has('mac')
