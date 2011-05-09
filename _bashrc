@@ -31,6 +31,9 @@ alias la='ls -A'
 export EDITOR='vim'
 export VISUAL=$EDITOR
 
-source ~/devel/lib/dotfiles/rosrc
+PYTHONSTARTUP=~/.pythonrc.py
+export PYTHONSTARTUP
+
+source ~/.rosrc
 source ~/.bash_aliases
 source ~/.bash_profile
