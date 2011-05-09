@@ -27,9 +27,14 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
+set title
 if exists("&relativenumber")
     set relativenumber
 endif
+
+set completeopt=menuone,longest,preview
+set pumheight=6
+
 " Undo File Stuff
 if exists("&undofile")
     set undodir=~/.vim/tmp/undodir
@@ -66,40 +71,21 @@ colorscheme delek
 call pathogen#runtime_append_all_bundles()
 
 " NERD Tree
-map <F2> :NERDTreeToggle<cr>
 map <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$']
 
 " Rainbow
 nmap <leader>R :RainbowParenthesesToggle<CR>
 
-" CTAGS
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 50
-map <F4> :TlistToggle<cr>
-map <F5> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-
-
-set tags+=~/.vim/tags/ros
-
-" OmniCppComplete settings to be tweaked
-let OmniCpp_NamespaceSearch=1                                                                                         
-let OmniCpp_GlobalScopeSearch=1
-let OmniCpp_ShowAccess=1
-let OmniCpp_MayCompleteDot=1
-let OmniCpp_MayCompleteArrow=1
-let OmniCpp_MayCompleteScope=1
-let OmniCpp_DefaultNamespaces=["std","_GLIBCXX_STD"]
-
-inoremap <F1> <ESC>:set invfullscreen<CR>a
-nnoremap <F1> :set invfullscreen<CR>
-vnoremap <F1> :set invfullscreen<CR>
-
 " Yankring
 let g:yankring_history_dir = '~/.vim/tmp/'
 nmap <leader>y :YRShow<cr>
-nnoremap <silent> <F3> :YRShow<cr>
-inoremap <silent> <F3> <ESC>:YRShow<cr>
+
+" Tasklist
+map <leader>td <Plug>TaskList
+
+" Command-t
+map <leader>f :CommandT<CR>
 
 " Use the damn hjkl keys
 nnoremap <up> <nop>
@@ -115,6 +101,14 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <leader>w <C-w>v<C-w>l
+
+" Might as well make capital W do the same thing.
+command! W :w
+" Vimrc stuff ,v opens ,V reloads
+map <leader>v :sp ~/.vimrc<CR><C-W>_
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+" For when I forget sudo
+cmap w!! w !sudo tee % >/dev/null
 
 " Text wrapping
 set wrap
@@ -134,6 +128,16 @@ nnoremap ; :
 " Faster ESC
 inoremap jj <ESC>
 
+set ls=2
+set vb t_vb=
+set confirm
+set showcmd
+set report=0
+set shortmess+=a
+set ruler
+set laststatus=2
+set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)%{fugitive#statusline()}
+
 if has('gui_running')
     if has('mac')
         set guifont=Menlo:h12
@@ -148,6 +152,5 @@ if has('gui_running')
     set go-=r
     set go-=R
 
-    let g:sparkupExecuteMapping = '<D-e>'
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
