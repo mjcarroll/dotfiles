@@ -75,6 +75,10 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
+" Make shifts keep selection
+vnoremap < <gv
+vnoremap > >gv
+
 " Color scheme (terminal)
 syntax on
 set background=dark
