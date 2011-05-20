@@ -100,6 +100,7 @@ sys.displayhook = my_displayhook
 
 EDITOR = os.environ.get('EDITOR', 'vi')
 EDIT_CMD = '\e'
+WELCOME = ''
 
 class EditableBufferInteractiveConsole(InteractiveConsole):
     def __init__(self, *args, **kwargs):
