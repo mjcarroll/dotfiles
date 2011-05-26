@@ -73,7 +73,7 @@ FIGNORE="~:CVS:#:.pyc:.swp:.swa"
 export HISTCONTROL="ignoreboth"                 # Ignore space and duplicates 
 export HISTSIZE=10000
 export HISTFILESIZE=10000
-export HISTTIMEFORMAT="[%D%T]"
+export HISTTIMEFORMAT="[%D %T]"
 export HISTIGNORE="fg*:bg*:history*:ls*"
 shopt -s cmdhist                                # Save multiline in one line
 shopt -s histreedit                             # Reedit failed substitution

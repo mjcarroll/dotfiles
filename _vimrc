@@ -30,8 +30,6 @@ if exists("&relativenumber")
     set relativenumber
 endif
 
-set completeopt=menuone,longest,preview
-set pumheight=6
 
 set ls=2
 set vb t_vb=
@@ -88,6 +86,16 @@ colorscheme delek
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Taglist
+let Tlist_Ctags_Cmd='/usr/bin/ctags'
+
+set tags=~/mytags
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+
+set pumheight=6
+set completeopt=menuone,longest,preview
+
 " NERD Tree
 map <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$']
@@ -104,6 +112,16 @@ map <leader>td <Plug>TaskList
 
 " Command-t:
 map <leader>f :CommandT<CR>
+
+let g:pep8map='<leader>8'
+
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows= 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+
+
 
 " Quickfix:
 nmap <leader>c :copen<CR>
@@ -140,7 +158,9 @@ nnoremap ; :
 " Faster ESC
 inoremap jj <ESC>
 
-
+" Some fixes for ROS Files
+au BufNewFile,BufRead *.launch setfiletype xml
+au BufNewFile,BufRead *.urdf setfiletype xml
 
 if has('gui_running')
     if has('mac')

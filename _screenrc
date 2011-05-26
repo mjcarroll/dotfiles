@@ -4,6 +4,13 @@ startup_message off
 # Automatically detach on hangup.
 autodetach on
 
+shell bash
+shelltitle ""
+defmonitor on
+silencewait 15
+nethack off
+defutf8 on
+
 # Change scrollback
 defscrollback 1000
 
