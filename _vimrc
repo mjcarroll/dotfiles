@@ -30,7 +30,6 @@ if exists("&relativenumber")
     set relativenumber
 endif
 
-
 set ls=2
 set vb t_vb=
 set confirm
@@ -127,6 +126,19 @@ let g:miniBufExplModSelTarget = 1
 nmap <leader>c :copen<CR>
 nmap <leader>cc :cclose<CR>
 
+" MiniBufExplorer
+map <leader>b :MiniBufExplorer<CR>
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapwindowNavVim = 1
+let g:miniBufExplModSelTarget = 1
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+set completeopt=menuone,longest,preview
+set pumheight=6
+
 nnoremap j gj
 nnoremap k gk
 
@@ -136,9 +148,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-
 " Might as well make capital W do the same thing.
 command! W :w
+command! Q :q
 " Vimrc stuff ,v opens ,V reloads
 map <leader>v :sp ~/.vimrc<CR><C-W>_
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
