@@ -58,3 +58,6 @@
 [submodule "_vim/bundle/taglist"]
 	path = _vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim
+[submodule "_bashmarks"]
+	path = _bashmarks
+	url = git://github.com/huyng/bashmarks.git
