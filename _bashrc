@@ -290,6 +290,10 @@ test -n "$PS1" && prompt_color
 
 source ~/.rosrc
 
+# Bashmarks
+export SDIRS=~/.sdirs
+source ~/.bashmarks/bashmarks.sh
+
 # Tell me something nifty at login
 test -n "$INTERACTIVE" -a -n "$LOGIN" && {
     uname -npsr
