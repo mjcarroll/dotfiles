@@ -223,15 +223,6 @@ extract ()
     fi
 }
 
-function ii()   # Get current host related info.
-{
-    echo -e "\nYou are logged on ${RED}$HOST"
-    echo -e "\nAdditionnal information:$NC " ; uname -a
-    echo -e "\n${RED}Users logged on:$NC " ; w -h
-    echo -e "\n${RED}Current date :$NC " ; date
-    echo -e "\n${RED}Machine stats :$NC " ; uptime
-}
-
 # -------------------------
 # Bash Completion 
 # -------------------------
@@ -289,6 +280,7 @@ export PYTHONSTARTUP
 test -n "$PS1" && prompt_color
 
 source ~/.rosrc
+source ~/.bash_aliases
 
 # Bashmarks
 export SDIRS=~/.sdirs

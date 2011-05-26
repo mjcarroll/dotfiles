@@ -28,6 +28,8 @@ set backspace=indent,eol,start
 set title
 if exists("&relativenumber")
     set relativenumber
+else
+    set number
 endif
 
 set ls=2
@@ -40,10 +42,10 @@ set ruler
 set laststatus=2
 set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)%{fugitive#statusline()}
 
-set scrolloff=3
 set matchpairs+=<:>
 set foldmethod=indent
 set foldlevel=99
+set virtualedit=onemore
 
 " Undo File Stuff
 if exists("&undofile")
@@ -99,9 +101,6 @@ set completeopt=menuone,longest,preview
 map <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$']
 
-" Rainbow
-nmap <leader>R :RainbowParenthesesToggle<CR>
-
 " Yankring
 let g:yankring_history_dir = '~/.vim/tmp/'
 nmap <leader>y :YRShow<cr>
@@ -118,9 +117,6 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows= 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
-
-
-
 
 " Quickfix:
 nmap <leader>c :copen<CR>
@@ -169,6 +165,17 @@ nnoremap ; :
 
 " Faster ESC
 inoremap jj <ESC>
+
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  " When editing a file, always jump to the last cursor position
+  autocmd BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal g'\"" |
+  \ endif
+endif
+
 
 " Some fixes for ROS Files
 au BufNewFile,BufRead *.launch setfiletype xml
