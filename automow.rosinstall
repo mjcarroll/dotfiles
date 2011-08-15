@@ -4,12 +4,3 @@
 - git:
     uri: git://github.com/wjwwood/wwoodall-ros-pkg.git
     local-name: wwoodall-ros-pkg
-- git:
-    uri: git@github.com:wjwwood/au-secon-2011.git
-    local-name: au-secon-2011
-- git:
-    uri: git@github.com:wjwwood/sparcexplorer.git
-    local-name: sparcexplorer
-- git:
-    uri: https://github.com/rutgers/avr_bridge.git
-    local-name: avr-bridge/avr_bridge
