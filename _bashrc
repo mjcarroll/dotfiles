@@ -108,7 +108,7 @@ export CLICOLOR="yes"
 # LS
 #-------------------
 
-LS_COMMON="-hBG"
+LS_COMMON="-hBG --color=auto"
 
 dircolors="$(type -P gdircolors dircolors | head -1)"
 test -n "$dircolors" && {
