@@ -255,18 +255,7 @@ _expand() {
 #--------------------------
 
 if [ "$UNAME" = Darwin ]; then
-    test -x /opt/local -a ! -L /opt/local && {
-        PORTS=/opt/local
-
-        PATH="$PORTS/bin:$PORTS/sbin:$PATH"
-        MANPATH="$PORTS/share/man:$MANPATH"
-
-        export CPATH=$PORTS/include
-        export LIBRARY_PATH=$PORTS/lib
-        export LD_LIBRARY_PATH=$PORTS/lib
-        export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$PORTS/lib
-
-    }
+    export PATH=/usr/local/bin:$PATH
 fi
 
 # -------------------------

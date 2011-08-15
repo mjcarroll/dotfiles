@@ -100,6 +100,7 @@ set completeopt=menuone,longest,preview
 " NERD Tree
 map <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$']
+let g:NERDTreeHijackNetrw=1
 
 " Yankring
 let g:yankring_history_dir = '~/.vim/tmp/'
