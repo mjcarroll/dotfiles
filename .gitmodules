@@ -61,3 +61,6 @@
 [submodule "_bashmarks"]
 	path = _bashmarks
 	url = git://github.com/huyng/bashmarks.git
+[submodule "_vim/bundle/vim-ipython"]
+	path = _vim/bundle/vim-ipython
+	url = git://github.com/ivanov/vim-ipython.git
