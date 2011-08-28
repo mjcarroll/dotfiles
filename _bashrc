@@ -108,7 +108,7 @@ export CLICOLOR="yes"
 # LS
 #-------------------
 
-LS_COMMON="-hBG --color=auto"
+LS_COMMON="-hBG"
 
 dircolors="$(type -P gdircolors dircolors | head -1)"
 test -n "$dircolors" && {
@@ -255,7 +255,9 @@ _expand() {
 #--------------------------
 
 if [ "$UNAME" = Darwin ]; then
-    export PATH=/usr/local/bin:$PATH
+    export PATH=/usr/local/bin:/usr/local/share/python:$PATH
+    export PKG_CONFIG_PATH=/usr/local/share/pkgconfig:$PKG_CONFIG_PATH
+    export PYTHONPATH="/usr/local/lib/python:$PYTHONPATH"
 fi
 
 # -------------------------

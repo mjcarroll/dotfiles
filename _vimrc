@@ -92,7 +92,6 @@ let Tlist_Ctags_Cmd='/usr/bin/ctags'
 
 set tags=~/mytags
 au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
 
 set pumheight=6
 set completeopt=menuone,longest,preview
@@ -114,11 +113,6 @@ map <leader>f :CommandT<CR>
 
 let g:pep8map='<leader>8'
 
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows= 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-
 " Quickfix:
 nmap <leader>c :copen<CR>
 nmap <leader>cc :cclose<CR>
@@ -132,6 +126,10 @@ let g:miniBufExplModSelTarget = 1
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
+
+" Snipmate
+let g:snips_author = 'Michael Carroll'
+let g:snippets_dir = '~/.vim/snippets/'
 
 set completeopt=menuone,longest,preview
 set pumheight=6
