@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 
 : ${HOME=~}
 : ${LOGNAME=$(id -un)}
@@ -108,7 +108,7 @@ export CLICOLOR="yes"
 # LS
 #-------------------
 
-LS_COMMON="-hBG"
+LS_COMMON="-hBG --color"
 
 dircolors="$(type -P gdircolors dircolors | head -1)"
 test -n "$dircolors" && {
@@ -270,12 +270,15 @@ export PYTHONSTARTUP
 
 test -n "$PS1" && prompt_color
 
+source ~/.sshrc
 source ~/.rosrc
 source ~/.bash_aliases
 
 # Bashmarks
 export SDIRS=~/.sdirs
 source ~/.bashmarks/bashmarks.sh
+
+export PATH=~/bin:$PATH
 
 # Tell me something nifty at login
 test -n "$INTERACTIVE" -a -n "$LOGIN" && {
