@@ -17,7 +17,6 @@ test -r /etc/bashrc && . /etc/bashrc
 
 # Notify immedetely
 set -o notify
-
 set -o vi
 
 # Shell options
@@ -108,7 +107,11 @@ export CLICOLOR="yes"
 # LS
 #-------------------
 
-LS_COMMON="-hBG"
+if [ "$UNAME" = Darwin ]; then
+    LS_COMMON="-hBG"
+else
+    LS_COMMON="-hBG --color=auto"
+fi
 
 dircolors="$(type -P gdircolors dircolors | head -1)"
 test -n "$dircolors" && {
@@ -120,8 +123,7 @@ test -n "$dircolors" && {
 }
 unset dircolors
 
-test -n "$LS_COMMON" &&
-    alias ls="command ls $LS_COMMON"
+test -n "$LS_COMMON" && alias ls="command ls $LS_COMMON"
 
 alias ll="ls -l"
 alias la="ls -a"
