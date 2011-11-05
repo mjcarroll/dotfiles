@@ -143,9 +143,9 @@ ps1_set()
   done
 
   if [[ $notime -gt 0 ]] ; then
-    PS1="$(ps1_identity)\[\033[34m\]\$(ps1_git)\$(ps1_rvm)\[\033[0m\]${separator}${prompt_char} "
+    PS1="$(ps1_identity)\[\033[34m\]\$(ps1_git)\$(ps1_rvm)\[\033[0m\]${separator}${BLUE}${prompt_char} ${PS_CLEAR}"
   else
-    PS1="\D{%H:%M:%S} $(ps1_identity)\[\033[34m\]\$(ps1_git)\$(ps1_rvm)\[\033[0m\]${separator}${prompt_char} "
+    PS1="\D{%H:%M:%S} $(ps1_identity)\[\033[34m\]\$(ps1_git)\$(ps1_rvm)\[\033[0m\]${separator}${BLUE}${prompt_char} ${PS_CLEAR}"
   fi
 }
 
