@@ -18,9 +18,7 @@ if [ "$1" = "vim" ]; then
 else
     for i in _*
     do
-        if [ -f $i ]; then
-            link_file $i
-        fi
+        link_file $i
     done
 fi
 

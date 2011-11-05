@@ -108,7 +108,7 @@ export CLICOLOR="yes"
 # LS
 #-------------------
 
-LS_COMMON="-hBG --color"
+LS_COMMON="-hBG"
 
 dircolors="$(type -P gdircolors dircolors | head -1)"
 test -n "$dircolors" && {
@@ -133,23 +133,6 @@ alias dir="ls"
 #----------------------
 # Prompt 
 #----------------------
-
-RED="\[\033[0;31m\]"
-BROWN="\[\033[0;33m\]"
-GREY="\[\033[0;97m\]"
-BLUE="\[\033[0;34m\]"
-PS_CLEAR="\[\033[0m\]"
-SCREEN_ESC="\[\033k\033\134\]"
-
-if [ "$LOGNAME" = "root" ]; then
-    COLOR1="${RED}"
-    COLOR2="${BROWN}"
-    P="#"
-else
-    COLOR1="${BLUE}"
-    COLOR2="${BROWN}"
-    P="\$"
-fi
 
 [[ -s "$HOME/.scripts/ps1_functions.sh" ]] && 
     source "$HOME/.scripts/ps1_functions.sh"
@@ -221,10 +204,6 @@ export PYTHONSTARTUP
 source ~/.sshrc
 source ~/.rosrc
 source ~/.bash_aliases
-
-# Bashmarks
-export SDIRS=~/.sdirs
-source ~/.bashmarks/bashmarks.sh
 
 export PATH=~/bin:$PATH
 
