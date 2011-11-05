@@ -145,46 +145,15 @@ if [ "$LOGNAME" = "root" ]; then
     COLOR1="${RED}"
     COLOR2="${BROWN}"
     P="#"
-elif hostname | grep -q 'github\.com'; then
-    GITHUB=yep
-    COLOR1="\[\e[0;94m\]"
-    COLOR2="\[\e[0;92m\]"
-    P="\$"
 else
     COLOR1="${BLUE}"
     COLOR2="${BROWN}"
     P="\$"
 fi
 
-prompt_simple() {
-    unset PROMPT_COMMAND
-    PS1="[\u@\h:\w]\$ "
-    PS2="> "
-}
-
-prompt_compact() {
-    unset PROMPT_COMMAND
-    PS1="${COLOR1}${P}${PS_CLEAR} "
-    PS2="> "
-}
-
-prompt_color() {
-    PS1="${GREY}[${COLOR1}\u${GREY}@${COLOR2}\h${GREY}:${COLOR1}\W${GREY}]${COLOR2}$P${PS_CLEAR} "
-    PS2="\[[33;1m\]continue \[[0m[1m\]> "
-}
-
-prompt_gitaware() {
-    PS1="$(__git_ps1 "(%s)")$ "
-    PS2="> "
-}
-
-prompt_michael() {
-    PS1="[\u@\[\e[32;1m\]\H \[\e[0m\]\w $(__git_ps1 "(%s)")$]\$ " 
-}
-
-prompt_noclock() {
-    PS1="\[\033[36m\][\t] \[\033[1;33m\]\u\[\033[0m\]@\h:\[\033[36m\][\w]:\[\033[0m\] "
-}
+[[ -s "$HOME/.scripts/ps1_functions.sh" ]] && 
+    source "$HOME/.scripts/ps1_functions.sh"
+ps1_set --prompt ∫ --notime 'S\:\ '
 
 #----------------------
 # Useful functions
@@ -226,29 +195,10 @@ extract ()
 # -------------------------
 # Bash Completion 
 # -------------------------
-test -z "$BASH_COMPLETION" && {
-    bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
-    test -n "$PS1" && test $bmajor -gt 1 && {
-        # search for a bash_completion file to source
-        for f in /usr/local/etc/bash_completion \
-            /usr/pkg/etc/bash_completion \
-            /opt/local/etc/bash_completion \
-            /etc/bash_completion \
-            ~/.bash_completion
-        do
-            test -f $f && {
-                . $f
-                break
-            }
-        done
-    }
-    unset bash bmajor bminor f
-}
 
-_expand() {
-    return 0
-}
-
+if [ -f /etc/bash_completion ] ; then
+    . /etc/bash_completion
+fi
 
 #--------------------------
 # Mac Specific
@@ -267,8 +217,6 @@ fi
 # Python interactive shell stuff
 PYTHONSTARTUP=~/.pythonrc.py
 export PYTHONSTARTUP
-
-test -n "$PS1" && prompt_color
 
 source ~/.sshrc
 source ~/.rosrc
