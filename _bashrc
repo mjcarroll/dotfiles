@@ -185,14 +185,21 @@ if [ -f /etc/bash_completion ] ; then
     . /etc/bash_completion
 fi
 
+if [ -f ~/.bash_completion ] ; then
+    . ~/.bash_completion
+fi
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
 #--------------------------
 # Mac Specific
 #--------------------------
 
 if [ "$UNAME" = Darwin ]; then
-    export PATH=/usr/local/bin:/usr/local/share/python:$PATH
-    export PKG_CONFIG_PATH=/usr/local/share/pkgconfig:$PKG_CONFIG_PATH
-    export PYTHONPATH="/usr/local/lib/python:$PYTHONPATH"
+    export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
+    export PYTHONPATH="/usr/local/lib/python2.7/site-packages:/usr/local/lib/python:$PYTHONPATH"
+    export ROS_OS_OVERRIDE=osxbrew:lion
 fi
 
 # -------------------------
