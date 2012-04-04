@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 : ${HOME=~}
 : ${LOGNAME=$(id -un)}
 : ${UNAME=$(uname)}
@@ -39,6 +38,7 @@ PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin"
 PATH="/usr/local/bin:$PATH"
 
 test -d "$HOME/devel/bin" && PATH="$HOME/devel/bin:$PATH"
+test -d "$HOME/bin" && PATH="$HOME/bin:$PATH"
 
 #----------------------
 # Environment Config
@@ -107,7 +107,7 @@ export CLICOLOR="yes"
 # LS
 #-------------------
 
-if [ "$UNAME" = Darwin ]; then
+if [ "$UNAME" = "Darwin" ]; then
     LS_COMMON="-hBG"
 else
     LS_COMMON="-hBG --color=auto"
@@ -130,7 +130,15 @@ alias la="ls -a"
 alias l.="ls -d .*"
 alias dir="ls"
 
+#--------------------------
+# Mac Specific
+#--------------------------
 
+if [ "$UNAME" = "Darwin" ]; then
+    export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
+    export PYTHONPATH="/usr/local/lib/python2.7/site-packages:/usr/local/lib/python:$PYTHONPATH"
+    export ROS_OS_OVERRIDE=osxbrew:lion
+fi
 
 #----------------------
 # Prompt 
@@ -192,23 +200,10 @@ fi
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
-#--------------------------
-# Mac Specific
-#--------------------------
-
-if [ "$UNAME" = Darwin ]; then
-    export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
-    export PYTHONPATH="/usr/local/lib/python2.7/site-packages:/usr/local/lib/python:$PYTHONPATH"
-    export ROS_OS_OVERRIDE=osxbrew:lion
-fi
 
 # -------------------------
 # Closing Notes/User Specific
 # -------------------------
-
-# Python interactive shell stuff
-PYTHONSTARTUP=~/.pythonrc.py
-export PYTHONSTARTUP
 
 source ~/.sshrc
 source ~/.rosrc
