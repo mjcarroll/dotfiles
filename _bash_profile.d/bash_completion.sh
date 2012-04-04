@@ -1,6 +1,14 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-: ${USER_BASH_COMPLETION_DIR:=~/.bash_completion.d}
+if [ -f /etc/bash_completion ] ; then
+    . /etc/bash_completion
+fi
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+: ${USER_BASH_COMPLETION_DIR:=~/.bash_profile.d/completion}
 
 test -n "$USER_BASH_COMPLETION_DIR" && {
     # source completion directory definitions
