@@ -4,8 +4,8 @@ if [ -f /etc/bash_completion ] ; then
     . /etc/bash_completion
 fi
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+if [ -f `command -v brew --prefix`/etc/bash_completion ]; then
+    . `command -v brew --prefix`/etc/bash_completion
 fi
 
 : ${USER_BASH_COMPLETION_DIR:=~/.bash_profile.d/completion}
