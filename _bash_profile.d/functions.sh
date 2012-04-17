@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
 
+_complete_ssh_hosts ()
+{
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
+                  cut -f 1 -d ' ' | \
+                  sed -e s/,.*//g | \
+                  grep -v ^# | \
+                  uniq | \
+                  grep -v "\[" 
+          `
+  COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
+  return 0
+}
+
 extract () {
   if [ $# -ne 1 ]
   then
@@ -85,16 +100,4 @@ if [ -n "$(git symbolic-ref HEAD 2> /dev/null)" ]; then
 else
     echo "you're currently not in a git repository"
 fi
-}
-
-function tab() {
-  osascript 2>/dev/null <<EOF
-    tell application "System Events"
-      tell process "iTerm" to keystroke "t" using command down
-    end
-    tell application "iTerm"
-      activate
-      do script with command "cd \"$PWD\"; $*" in window 1
-    end tell
-EOF
 }
