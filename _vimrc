@@ -25,7 +25,7 @@ set visualbell
 set cursorline
 set ttyfast
 set backspace=indent,eol,start
-set title
+set notitle
 if exists("&relativenumber")
     set relativenumber
 else
@@ -90,7 +90,6 @@ call pathogen#helptags()
 " Taglist
 let Tlist_Ctags_Cmd='/usr/bin/ctags'
 
-set tags=~/mytags
 au FileType python set omnifunc=pythoncomplete#Complete
 
 set pumheight=6
