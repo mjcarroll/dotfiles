@@ -10,7 +10,7 @@
 if [ "$UNAME" = "Darwin" ]; then
     LS_COMMON="-hBG"
 else
-    LS_COMMON="-hBG --color=auto"
+    LS_COMMON="-hB --color=auto"
 fi
 
 dircolors="$(type -P gdircolors dircolors | head -1)"

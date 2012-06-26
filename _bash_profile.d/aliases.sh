@@ -6,7 +6,6 @@ alias duh='du -chs ./*'
 alias hi='history | tail -20'
 alias vimdiff='vim -g -d'
 
-
 alias sl=ls
 alias ls='ls -G'        # Compact view, show colors
 alias la='ls -AF'       # Compact view, show hidden
@@ -24,9 +23,8 @@ alias -- -="cd -"        # Go back
 # Directory
 alias	md='mkdir -p'
 alias	rd=rmdir
-#}}}
 
-# Git {{{
+# Git
 alias g='git'
 alias gcl='git clone'
 alias ga='git add'

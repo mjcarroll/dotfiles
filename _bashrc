@@ -16,16 +16,6 @@ for file in "$HOME/.bash_profile.d"/*.sh; do
 done
 shopt -u nullglob
 
-#--------------------------
-# Mac Specific
-#--------------------------
-
-if [ "$UNAME" = "Darwin" ]; then
-    export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
-    export PYTHONPATH="/usr/local/lib/python2.7/site-packages:/usr/local/lib/python:$PYTHONPATH"
-    export ROS_OS_OVERRIDE=osxbrew:lion
-fi
-
 #----------------------
 # Prompt 
 #----------------------
@@ -83,14 +73,11 @@ if [ -f ~/.bash_completion ]; then
 fi
 
 #--------------------------
-# Mac Specific
+# LL Specific
 #--------------------------
 
-if [ "$UNAME" = Darwin ]; then
-    export PATH=/usr/local/bin:/usr/local/share/python:$PATH
-    export PKG_CONFIG_PATH=/usr/local/share/pkgconfig:$PKG_CONFIG_PATH
-    export PYTHONPATH="/usr/local/lib/python:$PYTHONPATH"
-fi
+export http_proxy=http://llproxy:8080
+export https_proxy=https://llproxy:8080
 
 # -------------------------
 # Closing Notes/User Specific
@@ -98,6 +85,9 @@ fi
 
 source ~/.sshrc
 source ~/.rosrc
+
+LD_LIBRARY_PATH=/usr/local/cuda:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
 
 # Tell me something nifty at login
 test -n "$INTERACTIVE" -a -n "$LOGIN" && {
