@@ -1,2 +1,2 @@
 eval `keychain --eval --agents ssh id_rsa`
-#. ~/.bashrc
+. ~/.bashrc
