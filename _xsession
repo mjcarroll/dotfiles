@@ -1,0 +1,19 @@
+xrdb -merge ~/.Xdefaults
+xsetroot -solid black
+
+trayer --edge top --align right --SetDockType true --SetPartialStrut true \
+    --expand true --transparent true --width 10 --tint 0x456030 --height 20 &
+
+jupiter &
+
+eval $(gnome-keyring-daemon --start)
+export GNOME_KEYRING_SOCKET
+export GNOME_KEYRING_PID
+
+if [ -x /usr/bin/nm-applet ]; then
+    nm-applet --sm-disable &
+fi
+
+gnome-settings-daemon &
+
+/usr/bin/xmonad

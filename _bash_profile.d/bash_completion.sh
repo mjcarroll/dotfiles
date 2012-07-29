@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-if [ -f /etc/bash_completion ] ; then
-    . /etc/bash_completion
+if [ -f /etc/bash_dyncompletion ] ; then
+    . /etc/bash_dyncompletion
 fi
 
 if [ -f `command -v brew --prefix`/etc/bash_completion ]; then
