@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+space_to_dash () {
+    for file in *; do mv "$file" `echo $file | tr ' ' '_'` ; done
+}
+
 _complete_ssh_hosts ()
 {
   COMPREPLY=()

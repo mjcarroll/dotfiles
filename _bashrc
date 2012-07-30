@@ -16,79 +16,24 @@ for file in "$HOME/.bash_profile.d"/*.sh; do
 done
 shopt -u nullglob
 
-#--------------------------
-# Mac Specific
-#--------------------------
-
-if [ "$UNAME" = "Darwin" ]; then
-    export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
-    export PYTHONPATH="/usr/local/lib/python2.7/site-packages:/usr/local/lib/python:$PYTHONPATH"
-    export ROS_OS_OVERRIDE=osxbrew:lion
-fi
-
 #----------------------
 # Prompt 
 #----------------------
 
 ps1_set --prompt ∫ --notime 'S\:\ '
 
-#----------------------
-# Useful functions
-#----------------------
-
-push_ssh_cert() {
-    local _host
-    test -f ~/.ssh/id_dsa.pub || ssh-keygen -t dsa
-    for _host in "$@";
-    do
-        echo $_host
-        ssh $_host 'touch ~/.ssh/authorized_keys'
-        ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_dsa.pub
-    done
-}
-
-extract () 
-{
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2)   tar xvjf $1        ;;
-            *.tar.gz)    tar xvzf $1     ;;
-            *.bz2)       bunzip2 $1       ;;
-            *.rar)       unrar x $1     ;;
-            *.gz)        gunzip $1     ;;
-            *.tar)       tar xvf $1        ;;
-            *.tbz2)      tar xvjf $1      ;;
-            *.tgz)       tar xvzf $1       ;;
-            *.zip)       unzip $1     ;;
-            *.touchosc)  unzip $1     ;;
-            *.Z)         uncompress $1  ;;
-            *.7z)        7z x $1    ;;
-            *)           echo "'$1' cannot be extracted via >extract<" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
-}
-
-#--------------------------
-# Mac Specific
-#--------------------------
-
-if [ "$UNAME" = Darwin ]; then
-    export PATH=/usr/local/bin:/usr/local/share/python:$PATH
-    export PKG_CONFIG_PATH=/usr/local/share/pkgconfig:$PKG_CONFIG_PATH
-    export PYTHONPATH="/usr/local/lib/python:$PYTHONPATH"
-fi
-
 # -------------------------
 # Closing Notes/User Specific
 # -------------------------
 
-source ~/.sshrc
 source ~/.rosrc
+
+LD_LIBRARY_PATH=/usr/local/cuda:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
 
 # Tell me something nifty at login
 test -n "$INTERACTIVE" -a -n "$LOGIN" && {
+    source ~/.sshrc
     uname -npsr
     uptime
 }
