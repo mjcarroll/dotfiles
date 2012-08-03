@@ -54,7 +54,7 @@ main = do
         , logHook = dynamicLogWithPP (myPP xmobar)
         }
         where
-            imLayout = smartBorders $ IM (1%6)
+            imLayout = layoutHints $ avoidStruts $ smartBorders $ IM (1%6)
                                       (Or (Title "Buddy List")
                                       (And (Resource "main") (ClassName "psi")))
 
@@ -77,6 +77,7 @@ main = do
                 [   className =? "psi" --> doShift "9:comm"
                   , className =? "Hamster-time-tracker" --> doShiftAndGo "8:tasks"
                   , className =? "Rviz" --> doShift "4"
+                  , className =? "Pidgin" --> doShift "9:comm"
                   , appName =? "tasklist" --> doShift "8:tasks"
                 ]
                 where

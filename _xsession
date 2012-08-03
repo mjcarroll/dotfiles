@@ -1,15 +1,17 @@
 xrdb -merge ~/.Xdefaults
 xsetroot -solid black
 
-trayer --edge top --align right --SetDockType true --SetPartialStrut true \
-    --expand true --transparent true --width 10 --tint 0x456030 --height 20 &
+xmodmap -e "remove Lock = Caps_Lock"
+xmodmap -e "keysym Caps_Lock = Control_L"
+xmodmap -e "add Control = Control_L"
+
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --transparent true --width 10 --tint 0x456030 --height 20 &
 
 gnome-settings-daemon &
 #jupiter &
-#hamster-time-tracker &
-#psi &
-#urxvt -name tasklist -e task shell &
-
+hamster-time-tracker &
+pidgin &
+urxvt -name tasklist -e task shell &
 
 eval $(gnome-keyring-daemon --start)
 export GNOME_KEYRING_SOCKET
@@ -19,9 +21,5 @@ export SSH_AUTH_SOCK="$GNOME_KEYRING_CONTROL/ssh"
 if [ -x /usr/bin/nm-applet ]; then
     nm-applet --sm-disable &
 fi
-
-xmodmap -e "remove Lock = Caps_Lock"
-xmodmap -e "keysym Caps_Lock = Control_L"
-xmodmap -e "add Control = Control_L"
 
 /usr/bin/xmonad
