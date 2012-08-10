@@ -1,0 +1,51 @@
+URxvt.termName: rxvt-unicode
+!! "urxvt -pe tabbed" only used for mini XMonad.Util.Scratchpad terminal
+URxvt.tabbed.tabbar-fg:2
+URxvt.tabbed.tabbar-bg:0
+URxvt.tabbed.tab-fg:3
+URxvt.tabbed.tab-bg:0
+URxvt.visualBell: false
+URxvt.urgentOnBell: true
+URxvt.imLocale: en_US.UTF-8
+URxvt.scrollBar: false
+URxvt.cursorBlink: false
+URxvt.intensityStyles: true
+URxvt.saveLines: 4096
+URxvt.urlLauncher: firefox
+URxvt.font:               xft:Ubuntu Mono:size=13
+URxvt.boldFont:         xft:Ubuntu Mono:bold:size=13
+!! Bind C-0, C-_ and C-= to activate normal, tiny and large font size respectively
+URxvt.keysym.C-0:     command:\033]710;xft:Ubuntu Mono-13\007
+URxvt.keysym.C-minus: command:\033]710;xft:Ubuntu Mono-7\007
+URxvt.keysym.C-equal: command:\033]710;xft:Ubuntu Mono-15\007
+URxvt.transparent: true
+!! for lightbg
+! URxvt.fading: 5
+!! for darkbg transp
+URxvt.fading: 25
+URxvt.background: #111111
+URxvt.foreground: #51a366
+!! Greenish theme - Dark
+*color0:       #000000
+*color8:       #666666
+!! DarkRed + Red
+*color1:       #b45151
+*color9:       #fe8686
+!! DarkGreen + Green
+*color2:       #8ba574
+*color10:      #a5dca5
+!! DarkYellow + Yellow
+*color3:       Khaki3
+*color11:      #efe58b
+!! DarkBlue + Blue
+*color4:       #2797d8
+*color12:      #86cdea
+!! DarkMagenta + Magenta
+*color5:       #aa6eaf
+*color13:      #b698b8
+!!DarkCyan + Cyan
+*color6:       #418179
+*color14:      #71bebe
+!! LightGrey + White
+*color7:       #bebebe
+*color15:      #ffffff
