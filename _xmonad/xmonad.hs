@@ -8,11 +8,14 @@ import qualified XMonad.Actions.Search as S
 import XMonad.Actions.Search
 import qualified XMonad.Actions.Submap as SM
 
-import XMonad.Util.Scratchpad (scratchpadSpawnAction, scratchpadManageHook, scratchpadFilterOutWorkspace)
+import XMonad.Util.Scratchpad 
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.SetWMName
+import XMonad.Hooks.ICCCMFocus
+
 import XMonad.Layout.LayoutHints
 import XMonad.Layout.HintedTile
 import XMonad.Layout.NoBorders
@@ -51,13 +54,10 @@ main = do
         , modMask = mod4Mask
         , borderWidth = 1
         , keys = \c -> myKeys c `M.union` keys defaultConfig c
-        , logHook = dynamicLogWithPP (myPP xmobar)
+        , logHook = dynamicLogWithPP (myPP xmobar) <+> takeTopFocus
+        , startupHook = setWMName "LG3D"
         }
         where
-            imLayout = layoutHints $ avoidStruts $ smartBorders $ IM (1%6)
-                                      (Or (Title "Buddy List")
-                                      (And (Resource "main") (ClassName "psi")))
-
             genericLayout = layoutHints $ avoidStruts $ smartBorders $ hintedTile Tall
                                  ||| hintedTile Wide
                                  ||| Full
@@ -68,25 +68,32 @@ main = do
             ratio   = 1/2
             delta   = 3/100
 
-            myLayout = onWorkspace "9:comm" imLayout
-                      $ genericLayout
+            myLayout = genericLayout
 
-            myWorkspaces =  map show [1..7] ++ ["8:tasks", "9:comm"]
+            myWorkspaces = map show [1..9]
 
             myManageHook = composeAll
-                [   className =? "psi" --> doShift "9:comm"
-                  , className =? "Hamster-time-tracker" --> doShiftAndGo "8:tasks"
+                [   className =? "psi" --> doShift "9"
+                  , className =? "Hamster-time-tracker" --> doShift "9"
                   , className =? "Rviz" --> doShift "4"
-                  , className =? "Pidgin" --> doShift "9:comm"
-                  , appName =? "tasklist" --> doShift "8:tasks"
-                ]
+                  , appName =? "tasklist" --> doShift "9"
+                ] <+> manageScratchPad
                 where
                     doShiftAndGo ws = doF (W.greedyView ws) <+> doShift ws
  
+            manageScratchPad :: ManageHook
+            manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
+                where
+                    h = 0.1
+                    w = 1
+                    t = 1 - h
+                    l = 1 - w
+
             myPP :: Handle -> PP
             myPP din = defaultPP
                 { ppCurrent = xmobarColor focusColor ""
                 , ppVisible = xmobarColor lightTextColor ""
+                , ppHidden = noScratchPad
                 , ppHiddenNoWindows = xmobarColor lightBackgroundColor ""
                 , ppUrgent = xmobarColor urgentColor ""
                 , ppSep = " · "
@@ -94,6 +101,8 @@ main = do
                 , ppTitle = xmobarColor lightTextColor ""
                 , ppOutput = hPutStrLn din
                 }
+                where
+                    noScratchPad ws = if ws == "NSP" then "" else ws
  
             myTheme :: Theme
             myTheme = defaultTheme

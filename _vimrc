@@ -26,6 +26,9 @@ set cursorline
 set ttyfast
 set backspace=indent,eol,start
 set notitle
+
+set mouse=a
+
 if exists("&relativenumber")
     set relativenumber
 else
