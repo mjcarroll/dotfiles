@@ -1,0 +1,19 @@
+alias rosenv='env | grep ROS'
+alias roselectric='source /opt/ros/electric/setup.bash'
+alias octovis='/opt/ros/fuerte/bin/octovis'
+alias xacro='rosrun xacro xacro.py'
+alias rosh='rosrun rosh rosh'
+
+rospython ()
+{
+    if [[ -z $1 ]]; then
+        if [[ -f ./manifest.xml ]]; then
+            pkgname=`basename \`pwd\``;
+            ipython -i -c "import roslib; roslib.load_manifest('$pkgname')";
+        else
+            ipython;
+        fi;
+    else
+        ipython -i -c "import roslib; roslib.load_manifest('$1')";
+    fi
+}
