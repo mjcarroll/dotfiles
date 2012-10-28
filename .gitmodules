@@ -54,13 +54,7 @@
 	url = https://github.com/vim-scripts/VOoM.git
 [submodule "_vim/bundle/yankring"]
 	path = _vim/bundle/yankring
-	url = https://github.com/chrismetcalf/vim-yankring.git
+	url = https://github.com/vim-scripts/YankRing.vim.git
 [submodule "_vim/bundle/taglist"]
 	path = _vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim
-[submodule "_bashmarks"]
-	path = _bashmarks
-	url = git://github.com/huyng/bashmarks.git
-[submodule "_vim/bundle/vim-ipython"]
-	path = _vim/bundle/vim-ipython
-	url = https://github.com/ivanov/vim-ipython.git 
