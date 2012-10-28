@@ -107,12 +107,6 @@ let g:NERDTreeHijackNetrw=1
 let g:yankring_history_dir = '~/.vim/tmp/'
 nmap <leader>y :YRShow<cr>
 
-" Tasklist
-map <leader>td <Plug>TaskList
-
-" Command-t:
-map <leader>f :CommandT<CR>
-
 let g:pep8map='<leader>8'
 
 " Quickfix:
@@ -148,6 +142,8 @@ map <C-l> <C-w>l
 " Might as well make capital W do the same thing.
 command! W :w
 command! Q :q
+command! Wq :wq
+
 " Vimrc stuff ,v opens ,V reloads
 map <leader>v :sp ~/.vimrc<CR><C-W>_
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
@@ -167,7 +163,6 @@ nnoremap ; :
 " Faster ESC
 inoremap jj <ESC>
 
-
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
   " When editing a file, always jump to the last cursor position
@@ -176,7 +171,6 @@ if has("autocmd")
   \   exe "normal g'\"" |
   \ endif
 endif
-
 
 " Some fixes for ROS Files
 au BufNewFile,BufRead *.launch setfiletype xml

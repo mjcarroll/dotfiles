@@ -1,3 +1,5 @@
+# Input config, especially for VI input
+
 set editing-mode vi
 
 # Adds punctuation as word delimiters

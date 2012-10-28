@@ -10,6 +10,7 @@
 # System bashrc
 test -r /etc/bashrc && . /etc/bashrc
 
+# Read all the interesting bits from sub-files.
 shopt -s nullglob
 for file in "$HOME/.bash_profile.d"/*.sh; do
     source "$file"
