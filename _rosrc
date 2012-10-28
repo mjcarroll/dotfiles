@@ -1,3 +1,5 @@
+source ~/devel/ros/release/setup.bash
+
 alias rosenv='env | grep ROS'
 alias roselectric='source /opt/ros/electric/setup.bash'
 alias octovis='/opt/ros/fuerte/bin/octovis'

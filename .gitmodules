@@ -16,9 +16,6 @@
 [submodule "_vim/bundle/minibufexpl"]
 	path = _vim/bundle/minibufexpl
 	url = https://github.com/sontek/minibufexpl.vim.git
-[submodule "_vim/bundle/command-t"]
-	path = _vim/bundle/command-t
-	url = https://github.com/wincent/Command-T.git
 [submodule "_vim/bundle/pyflakes"]
 	path = _vim/bundle/pyflakes
 	url = https://github.com/kevinw/pyflakes-vim.git
@@ -40,9 +37,6 @@
 [submodule "_vim/bundle/makegreen"]
 	path = _vim/bundle/makegreen
 	url = https://github.com/reinh/vim-makegreen
-[submodule "_vim/bundle/tasklist"]
-	path = _vim/bundle/tasklist
-	url = https://github.com/vim-scripts/TaskList.vim.git
 [submodule "_vim/bundle/nerdtree"]
 	path = _vim/bundle/nerdtree
 	url = https://github.com/vim-scripts/The-NERD-tree.git

@@ -143,7 +143,6 @@ map <C-l> <C-w>l
 command! W :w
 command! Q :q
 command! Wq :wq
-
 " Vimrc stuff ,v opens ,V reloads
 map <leader>v :sp ~/.vimrc<CR><C-W>_
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>

@@ -7,11 +7,8 @@ xmodmap -e "add Control = Control_L"
 
 trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --transparent true --width 10 --tint 0x456030 --height 20 &
 
-gnome-settings-daemon &
-#jupiter &
-hamster-time-tracker &
-pidgin &
-urxvt -name tasklist -e task shell &
+jupiter &
+nautilus --no-desktop &
 
 eval $(gnome-keyring-daemon --start)
 export GNOME_KEYRING_SOCKET

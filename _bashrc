@@ -32,6 +32,9 @@ source ~/.rosrc
 LD_LIBRARY_PATH=/usr/local/cuda:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
 
+export http_proxy=''
+export https_proxy=''
+
 # Tell me something nifty at login
 test -n "$INTERACTIVE" -a -n "$LOGIN" && {
     source ~/.sshrc
