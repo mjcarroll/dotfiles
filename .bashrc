@@ -13,7 +13,7 @@ bash_uptime() {
 }
 log() {
     [ ! -z "$PS1" ] \
-        && echo "."
+        && echo -n ""
     return 0
 }
 
