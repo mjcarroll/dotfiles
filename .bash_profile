@@ -1,2 +1,5 @@
-eval `keychain --eval --agents ssh id_rsa`
-. ~/.bashrc
+#!/bin/bash
+
+[ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
+
+[ -f "${HOME}/.bashrc" ] && source "${HOME}/.bashrc"

@@ -31,17 +31,17 @@ set -o vi
 
 # Shell options
 shopt -s cdspell                    # Check cd spelling
+shopt -s checkjobs
+shopt -s dirspell
 shopt -s extglob                    # Extended pattern matching
-shopt -s histappend                 # Append history on exit
-set +o histexpand
 shopt -s hostcomplete               # Attempt to complete '@'
 shopt -s interactive_comments       # Allow comments in interactive
 shopt -u mailwarn                   # Don't tell me about mail, please.
 shopt -s no_empty_cmd_completion    # Don't complete on an empty line.
 shopt -s cdable_vars
+shopt -s checkwinsize
 
 unset MAILCHECK                     # Don't tell me about mail, please.
-
 
 case "$-" in
     *i*) INTERACTIVE=yes ;;
@@ -52,13 +52,6 @@ case "$0" in
     -*) LOGIN=yes ;;
     *) unset LOGIN ;;
 esac
-
-# Enable UTF locale
-: ${LANG:="en_US.UTF-8"}
-: ${LANGUAGE:="en"}
-: ${LC_CTYPE:="en_US.UTF-8"}
-: ${LC_ALL:="en_US.UTF-8"}
-export LANG LANGUAGE LC_CTYPE LC_ALL
 
 # Always use passive FTP
 : ${FTP_PASSIVE:=1}
@@ -75,6 +68,14 @@ export HISTTIMEFORMAT="[%D %T]"
 export HISTIGNORE="fg*:bg*:history*:ls*"
 shopt -s cmdhist                                # Save multiline in one line
 shopt -s histreedit 
+shopt -s histappend
+set +o histexpand
+
+if [ $UID != 0 ]; then
+    export HISTFILE=~/.bash_history
+else
+    export HISTFILE=~/.bash_history_root
+fi
 
 #--------------------
 # Pager and editor
