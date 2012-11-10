@@ -147,8 +147,8 @@ main = do
  
             myKeys conf@(XConfig {XMonad.modMask = modMask, workspaces = ws}) = M.fromList $
                 [ ((modMask,                 xK_b), sendMessage ToggleStruts)
-                , ((modMask,                 xK_f), spawn "firefox")
-                , ((modMask ,                xK_s ),SM.submap $ searchEngineMap $ S.promptSearchBrowser myXPConfig "firefox")
+                , ((modMask,                 xK_w), spawn "google-chrome")
+                , ((modMask ,                xK_r ),SM.submap $ searchEngineMap $ S.promptSearchBrowser myXPConfig "firefox")
                 , ((modMask .|. controlMask, xK_x), shellPrompt myXPConfig)
                 , ((modMask .|. controlMask, xK_s), sshPrompt myXPConfig)
                 , ((modMask,                 xK_z), warpToWindow 1 1)
