@@ -4,7 +4,7 @@
 #   Man page: profile
 #   Useful reference: https://help.ubuntu.com/community/EnvironmentVariables
 
-#set -x
+# set -x
 
 # Prepend paths
 ppath() {
@@ -19,7 +19,7 @@ ppath "/usr/bin"
 for D in $(find $HOME -maxdepth 1 -name ".bin-*" -o -name ".bin" | sort); do
     ppath ${D}
 done
-ppath "~/.cabal/bin"
+ppath "${HOME}/.cabal/bin"
 unset -f ppath
 export PATH
 

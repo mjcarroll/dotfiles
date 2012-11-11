@@ -2,9 +2,6 @@
 
 set editing-mode vi
 
-# Adds punctuation as word delimiters
-set bind-tty-special-chars off
-
 # Completion Options
 set page-completions on
 set completion-ignore-case off
@@ -12,6 +9,7 @@ set completion-query-items 200
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set visible-stats on
+set echo-control-characters off
 
 # Useful stuff for UTF-8
 set meta-flag on
@@ -23,13 +21,17 @@ $if mode=vi
     set keymap vi-command
     "gg": beginning-of-history
     "G": end-of-history
+    "\C-k": kill-whole-line
+    "\ep": yank-last-arg
 
     set keymap vi-insert
     "\C-l": clear-screen
+    "\C-k": kill-whole-line
     "\C-w": backward-kill-word
     # auto-complete from the history
     "\C-p": history-search-backward
     "\C-n": history-search-forward
+    "\ep": yank-last-arg
 $endif
 
 # IPython needs this to appear at the bottom of the

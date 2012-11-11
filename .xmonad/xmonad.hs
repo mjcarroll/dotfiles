@@ -68,8 +68,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. controlMask, xK_l),
     spawn "leave")
 
+  , ((modMask, xK_f),
+    spawn "google-chrome")
+
   -- Launch dmenu
-  , ((modMask, xK_l),
+  , ((modMask, xK_p),
     spawn "exe=`dmenu_path | yeganesh` && eval \"exec $exe\"")
 
   -- Close focused window.

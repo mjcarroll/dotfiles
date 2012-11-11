@@ -69,7 +69,6 @@ export HISTIGNORE="fg*:bg*:history*:ls*"
 shopt -s cmdhist                                # Save multiline in one line
 shopt -s histreedit 
 shopt -s histappend
-set +o histexpand
 
 if [ $UID != 0 ]; then
     export HISTFILE=~/.bash_history

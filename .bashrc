@@ -39,12 +39,11 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
-# System bashrc
-log "system bashrc"
-#test -r /etc/bashrc && . /etc/bashrc
-
 [ -z "$PS1" ] \
     && return
+
+[ $(which stty) ] \
+    && stty -ixon
 
 # Read all the interesting bits from sub-files.
 shopt -s nullglob
