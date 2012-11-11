@@ -25,20 +25,6 @@ if [ $UID != 0 ]; then
         && export PIP_DOWNLOAD_CACHE="${HOME}/.cache/pip_download"
 fi
 
-# -------------------------------------------------------------------------
-# Connect to gpg agent if possible
-#
-log "gpg-agent"
-agent_file="$HOME/.gnupg/gpg-agent-info-$(hostname)"
-if [ -r "$agent_file" ] && kill -0 $(grep GPG_AGENT_INFO "$agent_file" | cut -d: -f 2) 2>/dev/null; then
-    source "$agent_file"
-    export GPG_AGENT_INFO;
-    export SSH_AUTH_SOCK;
-    export SSH_AGENT_PID
-fi
-GPG_TTY=$(tty)
-export GPG_TTY
-
 [ -z "$PS1" ] \
     && return
 

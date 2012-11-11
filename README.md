@@ -12,6 +12,7 @@ The newest revision of my dotfiles.  Managed using
     sudo apt-get install vim vim-gtk git tig git-gui git-svn gitk python-pip \
     xmonad suckless-tools xmobar dwm dmenu ubuntu-restricted-extras rxvt-unicode tmux \
     byobu terminator emacs trayer libghc6-xmonad-contrib-dev scrot cabal-install xclip \
+    ack build-essential gufw keychain chrony openssh-server 
 
 
 ### Cabal for yeganesh 

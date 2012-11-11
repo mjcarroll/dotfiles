@@ -56,3 +56,12 @@ EDITOR="editor" && export EDITOR
 VISUAL="${EDITOR}" && export VISUAL
 ALTERNATE_EDITOR="${EDITOR}" && export ALTERNATE_EDITOR
 [ $(which less) ] && PAGER="$(which less)" && export PAGER
+
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+DESKTOP_SESSION=ubuntu
+GDMSESSION=ubuntu
+export DESKTOP_SESSION
+export GDMSESSION
+
+
+eval `keychain --eval --agents ssh id_dsa`
