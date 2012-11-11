@@ -12,7 +12,7 @@ case $1 in
     l|light)
         xsetroot -solid '#eee8d5'
         ;;
-    b|black)̈́
+    b|black)
         xsetroot -solid black
         ;;
     w|white)

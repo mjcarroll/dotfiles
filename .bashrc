@@ -41,7 +41,7 @@ export GPG_TTY
 
 # System bashrc
 log "system bashrc"
-test -r /etc/bashrc && . /etc/bashrc
+#test -r /etc/bashrc && . /etc/bashrc
 
 [ -z "$PS1" ] \
     && return

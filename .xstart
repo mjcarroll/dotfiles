@@ -75,6 +75,8 @@ fi
 
 # Set the backbround color
 [ $(which bgset ) ] \
-    && bgset d &
+    && bgset black &
+
 trayer --edge top --align right --SetDockType true --SetPartialStrut false --expand true --transparent true --width 10 --tint 0x456030 --height 20 &
+
 /usr/bin/xmonad

@@ -10,6 +10,7 @@
 ppath() {
  [ -d "${1}" ] && PATH="${1}:${PATH}"
 }
+
 ppath "/sbin"
 ppath "/bin"
 ppath "/usr/sbin"
@@ -18,6 +19,7 @@ ppath "/usr/bin"
 for D in $(find $HOME -maxdepth 1 -name ".bin-*" -o -name ".bin" | sort); do
     ppath ${D}
 done
+ppath "~/.cabal/bin"
 unset -f ppath
 export PATH
 
