@@ -1,3 +1,7 @@
-vim/vim/tmp/*
-_vim/_vim
-_ssh/environment
+.ssh/environment
+.ssh/id_rsa
+.ssh/id_rsa_pub
+.rosrc-private
+.rosrc-local
+.bashrc-private
+.bashrc-local

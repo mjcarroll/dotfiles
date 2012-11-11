@@ -64,6 +64,11 @@ ps1_set --prompt ∫ --notime 'S\:\ '
     && . "${HOME}/.bashrc-local" \
     && log "loaded .bashrc-local"
 
+# ROS
+[ -e "${HOME}/.rosrc" ] \
+    && . "${HOME}/.rosrc" \
+    && log "loaded .rosrc"
+
 # clipboard paste
 if [ -n "$DISPLAY" ] && [ -x /usr/bin/xclip ] ; then
     # Work around a bash bug: \C-@ does not work in a key binding

@@ -1,8 +1,11 @@
-source ~/devel/ros/release/setup.bash
+[ -e "${HOME}/.rosrc-private" ] \
+    && . "${HOME}/.rosrc-private"
+[ -e "${HOME}/.rosrc-local" ] \
+    && . "${HOME}/.rosrc-local"
 
 alias rosenv='env | grep ROS'
-alias roselectric='source /opt/ros/electric/setup.bash'
-alias octovis='/opt/ros/fuerte/bin/octovis'
+alias electric='source /opt/ros/electric/setup.bash'
+alias fuerte='source /opt/ros/fuerte/setup.bash'
 alias xacro='rosrun xacro xacro.py'
 alias rosh='rosrun rosh rosh'
 
