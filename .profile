@@ -58,5 +58,3 @@ ALTERNATE_EDITOR="${EDITOR}" && export ALTERNATE_EDITOR
 [ $(which less) ] && PAGER="$(which less)" && export PAGER
 
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-
-eval `keychain --eval --agents ssh id_dsa`

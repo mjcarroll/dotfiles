@@ -42,6 +42,9 @@ shopt -u nullglob
 # Prompt
 ps1_set --prompt ∫ --notime 'S\:\ '
 
+[ -e "${HOME}/.sshrc" ] \
+    && . "${HOME}/.sshrc"
+
 # Private and Local
 [ -e "${HOME}/.bashrc-private" ] \
     && . "${HOME}/.bashrc-private" \

@@ -31,19 +31,6 @@ dbuslaunch="`which dbus-launch 2>/dev/null`"
 [ $(which devmon) ] \
     && devmon &
 
-# Start gnupg or ssh agent
-agent_file="$HOME/.gnupg/gpg-agent-info-$(hostname)"
-unset GPG_AGENT_INFO; unset SSH_AUTH_SOCK; unset SSH_AGENT_PID
-rm -f "${agent_file}"
-if [ $(which gpg-agent) ]; then
-    eval $(gpg-agent --daemon --sh --enable-ssh-support --write-env-file=${agent_file})
-elif [ $(which ssh-agent) ]; then
-    eval $(ssh-agent -s)
-fi
-export GPG_AGENT_INFO
-export SSH_AUTH_SOCK
-export SSH_AGENT_PID
-
 xmodmap -e "remove Lock = Caps_Lock"
 xmodmap -e "keysym Caps_Lock = Control_L"
 xmodmap -e "add Control = Control_L"
@@ -57,7 +44,7 @@ if [ $(which gnome-settings-daemon) ]; then
 	        gconftool-2 -t bool -s /apps/nautilus/preferences/show_desktop false
 	        gconftool-2 -t bool -s /desktop/gnome/volume_manager/automount_drives false
 	        gconftool-2 -t bool -s /apps/gnome_settings_daemon/screensaver/start_screensaver false
-	        gconftool-2 -t bool -s /apps/gnome-keyring/daemon-components/ssh false
+	        gconftool-2 -t bool -s /apps/gnome-keyring/daemon-components/ssh true
 	        gconftool-2 -t bool -s /desktop/gnome/background/draw_background false
 	        gconftool-2 -t bool -s /apps/gnome_settings_daemon/plugins/background/active false
 	        gconftool-2 -t bool -s /apps/gnome_settings_daemon/plugins/ubuntuone/active false
@@ -68,6 +55,9 @@ if [ $(which gnome-settings-daemon) ]; then
         fi
     ) &
 fi
+
+[ $(which gnome-keyring-daemon) ] \
+    && export `gnome-keyring-daemon --start`
 
 # Launch the network manager applet
 [ $(which nm-applet) ] \

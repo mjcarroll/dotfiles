@@ -1,0 +1,56 @@
+SSH_ENV="$HOME/.ssh/environment"
+
+if [ -x "$(which gnome-keyring-daemon)" ]; then
+    EXE=gnome-keyring-daemon
+    PID=GNOME_KEYRING_PID
+else
+    EXE=ssh-agent
+    PID=SSH_AGENT_PID
+fi
+
+# start the ssh-agent
+function start_agent {
+    # spawn ssh-agent
+    if [ $EXE == "gnome-keyring-daemon" ]; then
+        echo "Initializing new Gnome Keyring"
+        $EXE > "$SSH_ENV"
+    else
+        echo "Initializing new SSH Agent"
+        $EXE | sed 's/^echo/#echo/' > $SSH_ENV
+    fi
+    echo succeeded
+    chmod 600 "$SSH_ENV"
+    . "$SSH_ENV" > /dev/null
+    ssh-add
+}
+
+# test for identities
+function test_identities {
+    # test whether standard identities have been added to the agent already
+    ssh-add -l | grep "The agent has no identities" > /dev/null
+    if [ $? -eq 0 ]; then
+        ssh-add
+        # $SSH_AUTH_SOCK broken so we start a new proper agent
+        if [ $? -eq 2 ];then
+            start_agent
+        fi
+    fi
+}
+
+# check for running ssh-agent with proper $SSH_AGENT_PID
+if [ -n "$PID" ]; then
+    ps -ef | grep "$PID" | grep $EXE > /dev/null
+    if [ $? -eq 0 ]; then
+	test_identities
+    fi
+else
+    if [ -f "$SSH_ENV" ]; then
+	. "$SSH_ENV" > /dev/null
+    fi
+    ps -ef | grep "$PID" | grep -v grep | grep $EXE > /dev/null
+    if [ $? -eq 0 ]; then
+        test_identities
+    else
+        start_agent
+    fi
+fi
