@@ -2,6 +2,8 @@
 
 set editing-mode vi
 
+set bind-tty-special-chars off
+
 # Completion Options
 set page-completions on
 set completion-ignore-case off
@@ -9,7 +11,7 @@ set completion-query-items 200
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set visible-stats on
-set echo-control-characters off
+set echo-control-characters on
 
 # Useful stuff for UTF-8
 set meta-flag on
