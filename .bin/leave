@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Run when leaving a console or similar.
 # Might lock the desktop and turn off the screen
@@ -8,10 +8,6 @@
 #
 
 set -e
-
-# Unload any loaded agent keys
-[ -n "$GPG_AGENT_INFO" ] \
-    && kill -HUP $(echo $GPG_AGENT_INFO | awk -F: '{print $2}')
 
 # Drop sudo authentications
 [ -x "$(which sudo)" ] \
