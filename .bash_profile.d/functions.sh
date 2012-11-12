@@ -1,24 +1,5 @@
 #!/usr/bin/env bash
 
-space_to_dash () {
-    for file in *; do mv "$file" `echo $file | tr ' ' '_'` ; done
-}
-
-_complete_ssh_hosts ()
-{
-  COMPREPLY=()
-  cur="${COMP_WORDS[COMP_CWORD]}"
-  comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
-                  cut -f 1 -d ' ' | \
-                  sed -e s/,.*//g | \
-                  grep -v ^# | \
-                  uniq | \
-                  grep -v "\[" 
-          `
-  COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
-  return 0
-}
-
 extract () {
   if [ $# -ne 1 ]
   then
@@ -65,43 +46,4 @@ function mkcd() {
 
 function lsgrep(){
   ls | grep "$*"
-}
-
-function git_stats {
-# awesome work from https://github.com/esc/git-stats
-# including some modifications
-
-if [ -n "$(git symbolic-ref HEAD 2> /dev/null)" ]; then
-    echo "Number of commits per author:"
-    git --no-pager shortlog -sn --all
-    AUTHORS=$( git shortlog -sn --all | cut -f2 | cut -f1 -d' ')
-    LOGOPTS=""
-    if [ "$1" == '-w' ]; then
-        LOGOPTS="$LOGOPTS -w"
-        shift
-    fi
-    if [ "$1" == '-M' ]; then
-        LOGOPTS="$LOGOPTS -M"
-        shift
-    fi
-    if [ "$1" == '-C' ]; then
-        LOGOPTS="$LOGOPTS -C --find-copies-harder"
-        shift
-    fi
-    for a in $AUTHORS
-    do
-        echo '-------------------'
-        echo "Statistics for: $a"
-        echo -n "Number of files changed: "
-        git log $LOGOPTS --all --numstat --format="%n" --author=$a | cut -f3 | sort -iu | wc -l
-        echo -n "Number of lines added: "
-        git log $LOGOPTS --all --numstat --format="%n" --author=$a | cut -f1 | awk '{s+=$1} END {print s}'
-        echo -n "Number of lines deleted: "
-        git log $LOGOPTS --all --numstat --format="%n" --author=$a | cut -f2 | awk '{s+=$1} END {print s}'
-        echo -n "Number of merges: "
-        git log $LOGOPTS --all --merges --author=$a | grep -c '^commit'
-    done
-else
-    echo "you're currently not in a git repository"
-fi
 }
