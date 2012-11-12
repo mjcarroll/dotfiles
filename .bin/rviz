@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# Wrapper script for rviz.  Uses optirun if bumblebee is 
+# installed. Use the -m flag for choose-master
+
+# Test for rospack
+[ ! -x "$(which rospack)" ] \
+    && echo "No ROS environment loaded." \
+    && exit -1
+
+# Find RVIZ
+RVIZ_EXE="$(rospack find rviz)/bin/rviz"
+
+# Test that rviz exists
+[ ! -x $RVIZ_EXE ] \
+    && echo "RViz not found." \
+    && echo "On Ubuntu: sudo apt-get install ros-fuerte-visualization" \
+    && exit -1
+
+# Set up the base command
+COMMAND=$RVIZ_EXE
+
+# Get args
+args=`getopt m $*`
+set -- $args
+
+for i; do
+    if [ $i == "-m" ]; then
+        COMMAND="rosrun rviz choose-master.py ${COMMAND}"
+    fi
+done
+
+# Test for optirun
+if [ -x "$(which optirun)" ]; then
+    COMMAND="optirun ${COMMAND}"
+fi
+
+echo $COMMAND
