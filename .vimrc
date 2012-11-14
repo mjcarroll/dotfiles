@@ -174,6 +174,9 @@ endif
 " Some fixes for ROS Files
 au BufNewFile,BufRead *.launch setfiletype xml
 au BufNewFile,BufRead *.urdf setfiletype xml
+au BufNewFile,BufRead *.xacro setfiletype xml
+au BufNewFile,BufRead *.sdf setfiletype xml
+au BufNewFile,BufRead *.teset setfiletype xml
 
 if has('gui_running')
     if has('mac')

@@ -42,6 +42,15 @@ shopt -u nullglob
 # Prompt
 ps1_set --prompt ∫ --notime 'S\:\ '
 
+# And Title Bar
+case "$TERM" in
+    xterm*|rxvt*)
+        PROMPT_COMMAND='echo -ne "\033]0;urxvt:${PWD/$HOME/~}\007"'
+        ;;
+    *)
+        ;;
+esac
+
 [ -e "${HOME}/.sshrc" ] \
     && . "${HOME}/.sshrc"
 

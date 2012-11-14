@@ -67,6 +67,9 @@ fi
 [ $(which bgset ) ] \
     && bgset black &
 
+[ -e "${HOME}/.xstart-private" ] \
+    && . "${HOME}/.xstart-private"
+
 trayer --edge top --align right --SetDockType true --SetPartialStrut false --expand true --transparent true --width 10 --tint 0x456030 --height 20 &
 
 exec /usr/bin/xmonad
