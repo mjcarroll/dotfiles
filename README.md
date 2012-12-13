@@ -17,16 +17,13 @@ Two-line prompt, git-aware
     [michael@michael-ubuntu-12:~/test]  (git:master:c1d0d25) 
     ∫ 
 
-Dircolors, useful aliases, VI input mode.
-Xmonad Configuration (.xmonad) with custom .xsession
-
-Useful scripts in .bin and .bin-ros (For ROS http://ros.org).
-
-Will additionally source ~/.bashrc-local and ~/.bashrc-private for local and private settings
-Will additionally source ~/.profile-local and ~/.profile-private for local and private settings
-Will additionally source ~/.rosrc-local and ~/.rosrc-private for local and private ROS settings
-
-VIM Configurations
+* Dircolors, useful aliases, VI input mode.
+* Xmonad Configuration (.xmonad) with custom .xsession
+* Useful collected scripts in .bin and .bin-ros (For ROS http://ros.org).
+* Will additionally source ~/.bashrc-local and ~/.bashrc-private for local and private settings
+* Will additionally source ~/.profile-local and ~/.profile-private for local and private settings
+* Will additionally source ~/.rosrc-local and ~/.rosrc-private for local and private ROS settings
+* VIM Configurations
 
 
 ## Installation bits
