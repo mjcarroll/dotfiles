@@ -27,7 +27,6 @@ test -n "$LS_COMMON" && alias ls="command ls $LS_COMMON"
 
 # Notify immedetely
 set -o notify
-set -o vi
 
 # Shell options
 shopt -s cdspell                    # Check cd spelling
