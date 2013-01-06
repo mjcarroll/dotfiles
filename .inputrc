@@ -1,6 +1,6 @@
 # Input config, especially for VI input
 
-set editing-mode vi
+# set editing-mode vi
 
 set bind-tty-special-chars off
 
@@ -38,4 +38,4 @@ $endif
 
 # IPython needs this to appear at the bottom of the
 # file for clear-screen to work
-set keymap vi
+#set keymap vi
