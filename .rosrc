@@ -19,6 +19,7 @@ clear_rosws ()
     unset ROS_PACKAGE_PATH
     unset ROS_ETC_DIR
     unset ROS_IP
+    unset ROS_HOSTNAME
     unset ROS_MASTER_URI
     unset ROS_DISTRO
 }
