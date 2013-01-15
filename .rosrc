@@ -4,11 +4,25 @@
     && . "${HOME}/.rosrc-local"
 
 alias rosenv='env | grep ROS'
+alias rosps='ps aux | grep ros'
+
 alias electric='source /opt/ros/electric/setup.bash'
 alias fuerte='source /opt/ros/fuerte/setup.bash'
+alias groovy='source /opt/ros/groovy/setup.bash'
 alias xacro='rosrun xacro xacro.py'
 alias rosh='rosrun rosh rosh'
 alias psros='ps aux | grep ros'
+
+clear_rosws ()
+{
+    unset ROS_ROOT
+    unset ROS_PACKAGE_PATH
+    unset ROS_ETC_DIR
+    unset ROS_IP
+    unset ROS_HOSTNAME
+    unset ROS_MASTER_URI
+    unset ROS_DISTRO
+}
 
 rospython ()
 {

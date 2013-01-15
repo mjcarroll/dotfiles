@@ -44,8 +44,11 @@ ps1_set --prompt ∫ --notime 'S\:\ '
 
 # And Title Bar
 case "$TERM" in
-    xterm*|rxvt*)
+    rxvt*)
         PROMPT_COMMAND='echo -ne "\033]0;urxvt:${PWD/$HOME/~}\007"'
+        ;;
+    xterm*)
+        PROMPT_COMMAND='echo -ne "\033]0;${PWD/$HOME/~}\007"'
         ;;
     *)
         ;;
