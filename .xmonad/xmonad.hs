@@ -73,7 +73,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Launch dmenu
   , ((modMask, xK_a),
-    spawn "exe=`dmenu_path | yeganesh` && eval \"exec $exe\"")
+    spawn "exe=`dmenu_path` && eval \"exec $exe\"")
 
   -- Close focused window.
   , ((modMask .|. shiftMask, xK_c),
