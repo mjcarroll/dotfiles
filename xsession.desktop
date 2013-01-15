@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Xsession
+Comment=Run Custom User XSession
+Exec=/etc/X11/Xsession
+Icon=xmonad.png
+Type=XSession

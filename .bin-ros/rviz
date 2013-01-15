@@ -35,4 +35,4 @@ if [ -x "$(which optirun)" ]; then
     COMMAND="optirun ${COMMAND}"
 fi
 
-echo $COMMAND
+$COMMAND

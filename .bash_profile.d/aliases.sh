@@ -40,3 +40,7 @@ alias gba='git branch -a'
 alias gco='git checkout'
 alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
 alias gll='git log --graph --pretty=oneline --abbrev-commit'
+
+alias begin-pomodoro='bash ~/.bin/p-timer.sh 25 "Pomodoro" "Pomodoro started, you have 25 minutes left" "Pomodoro ended. Please stop the work and take short break"'
+
+alias take-five='bash ~/.bin/p-timer.sh 5 "Take Five" "Take Five" "Break Over"'

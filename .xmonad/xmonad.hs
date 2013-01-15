@@ -11,21 +11,29 @@ import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
+import XMonad.Layout.IM
+import XMonad.Layout.PerWorkspace (onWorkspace)
+import XMonad.Layout.Reflect
+import XMonad.Layout.Grid
 
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
+import Data.Ratio ((%))
 
 myTerminal = "/usr/bin/urxvt"
 
-myWorkspaces= ["1"] ++ map show [2..8] ++ ["9:zim"]
+myWorkspaces= ["1:web"] ++ map show [2..7] ++ ["8:comms", "9:zim"]
 
 myManageHook = composeAll
     [ className =? "Chromium"       --> doShift "1:web"
     , resource =? "desktop_window"  --> doIgnore
     , className =? "Google-chrome"  --> doShift "1:web"
     , className =? "firefox"        --> doShift "1:web"
+    , className =? "Thunderbird"    --> doShift "8:comms"
+    , className =? "Zim"            --> doShift "9:zim"
+    , className =? "Pidgin"         --> doShift "8:comms"
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 myLayout = avoidStruts (
@@ -35,6 +43,11 @@ myLayout = avoidStruts (
     Full |||
     spiral (6/7) |||
     noBorders (fullscreenFull Full))
+
+imLayout = avoidStruts $ reflectHoriz $ IM (1/7) (Title "Buddy List") 
+
+myLayouts = onWorkspace "8:comms" imLayout $
+            myLayout
 
 myFocusColor = "#60ff45"
 textColor = "#c0c0a0"
@@ -196,7 +209,7 @@ main = do
         , ppHiddenNoWindows = xmobarColor lightBackgroundColor ""
         , ppUrgent = xmobarColor myUrgentColor ""
         , ppSep = " · "
-        , ppWsSep = ""
+        , ppWsSep = " "
         , ppTitle = xmobarColor lightTextColor "" . shorten 100
         , ppOutput = hPutStrLn xmproc
         }
@@ -228,7 +241,7 @@ defaults = defaultConfig {
     mouseBindings = myMouseBindings,
  
     -- hooks, layouts
-    layoutHook = smartBorders $ myLayout,
+    layoutHook = smartBorders $ myLayouts,
     manageHook = myManageHook,
     startupHook = myStartupHook
 }

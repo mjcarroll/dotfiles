@@ -8,6 +8,7 @@ alias electric='source /opt/ros/electric/setup.bash'
 alias fuerte='source /opt/ros/fuerte/setup.bash'
 alias xacro='rosrun xacro xacro.py'
 alias rosh='rosrun rosh rosh'
+alias psros='ps aux | grep ros'
 
 rospython ()
 {
