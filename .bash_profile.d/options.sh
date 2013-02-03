@@ -29,9 +29,11 @@ test -n "$LS_COMMON" && alias ls="command ls $LS_COMMON"
 set -o notify
 
 # Shell options
+if [ "$UNAME" != "Darwin" ]; then
+    shopt -s dirspell
+    shopt -s checkjobs
+fi
 shopt -s cdspell                    # Check cd spelling
-shopt -s checkjobs
-shopt -s dirspell
 shopt -s extglob                    # Extended pattern matching
 shopt -s hostcomplete               # Attempt to complete '@'
 shopt -s interactive_comments       # Allow comments in interactive

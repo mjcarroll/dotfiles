@@ -10,14 +10,17 @@ fi
 
 : ${USER_BASH_COMPLETION_DIR:=~/.bash_profile.d/completion}
 
+shopt -s extglob
+
 test -n "$USER_BASH_COMPLETION_DIR" && {
     # source completion directory definitions
     if [ -d $USER_BASH_COMPLETION_DIR -a -r $USER_BASH_COMPLETION_DIR -a \
             -x $USER_BASH_COMPLETION_DIR ]; then
         for i in $USER_BASH_COMPLETION_DIR/*; do
-            [[ ${i##*/} != @(*~|*.bak|*.swp|\#*\#|*.dpkg*|.rpm*) ]] &&
-            [ \( -f $i -o -h $i \) -a -r $i ] && . $i
+            [[ ${i##*/} != @(*~|*.bak|*.swp|\#*\#|*.dpkg*|.rpm*) ]] && [ \( -f $i -o -h $i \) -a -r $i ] && . $i
         done
     fi
     unset i
 }
+
+shopt -u extglob
