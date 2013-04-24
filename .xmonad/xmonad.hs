@@ -82,11 +82,14 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     spawn "leave")
 
   , ((modMask, xK_f),
-    spawn "google-chrome")
+    spawn "google-chrome --proxy-pac-url=http://llproxy.llan.ll.mit.edu:8080")
+
+  , ((modMask .|. shiftMask, xK_f),
+    spawn "firefox")
 
   -- Launch dmenu
   , ((modMask, xK_a),
-    spawn "exe=`dmenu_path` && eval \"exec $exe\"")
+    spawn "exe=`dmenu_path | yeganesh` && eval \"exec $exe\"")
 
   -- Close focused window.
   , ((modMask .|. shiftMask, xK_c),

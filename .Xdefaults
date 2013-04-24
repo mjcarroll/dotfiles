@@ -37,7 +37,7 @@ URxvt.saveLines:                      5120
 URxvt.scrollWithBuffer:               true
 URxvt.scrollTtyOutput:                false
 URxvt.scrollTtyKeypress:              true
-URxvt*urgentOnBell:                   true
+URxvt.urgentOnBell:                   true
 URxvt*visualBell:                     false
 URxvt*perl-ext-common:                default,matcher
 URxvt*urlLauncher:                    xdg-open
