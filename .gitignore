@@ -5,3 +5,5 @@
 .rosrc-local
 .bashrc-private
 .bashrc-local
+.config-base/ipython/profile_default/db
+.config-base/ipython/profile_default/security

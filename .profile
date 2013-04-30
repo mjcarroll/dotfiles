@@ -39,6 +39,7 @@ LC_ADDRESS="en_US.utf8" && export LC_ADDRESS
 LC_TELEPHONE="en_US.utf8" && export LC_TELEPHONE
 LC_MEASUREMENT="en_US.utf8" && export LC_MEASUREMENT
 LC_IDENTIFICATION="en_US.utf8" && export LC_IDENTIFICATION
+
 # Prohibit perl from complaining about missing locales
 PERL_BADLANG=0 && export PERL_BADLANG
 
@@ -58,3 +59,5 @@ ALTERNATE_EDITOR="${EDITOR}" && export ALTERNATE_EDITOR
 [ $(which less) ] && PAGER="$(which less)" && export PAGER
 
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+export LD_LIBRARY_PATH=:/usr/local/cuda/lib64
