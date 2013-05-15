@@ -54,6 +54,9 @@ case "$TERM" in
         ;;
 esac
 
+[ -e "${HOME}/.bash_profile.d/z.sh" ] \
+    && . "${HOME}/.bash_profile.d/z.sh"
+
 [ -e "${HOME}/.profile" ] \
     && . "${HOME}/.profile"
 
