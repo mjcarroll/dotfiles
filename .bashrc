@@ -60,13 +60,11 @@ esac
 [ -e "${HOME}/.profile" ] \
     && . "${HOME}/.profile"
 
-[ -e "${HOME}/.sshrc" ] \
-    && . "${HOME}/.sshrc"
-
 # Private and Local
 [ -e "${HOME}/.bashrc-private" ] \
     && . "${HOME}/.bashrc-private" \
     && log "loaded .bashrc-private"
+
 [ -e "${HOME}/.bashrc-local" ] \
     && . "${HOME}/.bashrc-local" \
     && log "loaded .bashrc-local"

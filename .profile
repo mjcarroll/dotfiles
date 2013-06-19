@@ -19,7 +19,6 @@ ppath "/usr/bin"
 for D in $(find $HOME -maxdepth 1 -name ".bin-*" -o -name ".bin" | sort); do
     ppath ${D}
 done
-ppath "${HOME}/.cabal/bin"
 unset -f ppath
 export PATH
 
@@ -48,7 +47,6 @@ IPYTHONDIR="${HOME}/.config-base/ipython"
 export IPYTHONDIR
 
 # PRIVATE AND LOCAL
-#
 [ -e "${HOME}/.profile-private" ] && . "${HOME}/.profile-private"
 [ -e "${HOME}/.profile-local" ] && . "${HOME}/.profile-local"
 
@@ -59,5 +57,3 @@ ALTERNATE_EDITOR="${EDITOR}" && export ALTERNATE_EDITOR
 [ $(which less) ] && PAGER="$(which less)" && export PAGER
 
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-
-export LD_LIBRARY_PATH=:/usr/local/cuda/lib64
