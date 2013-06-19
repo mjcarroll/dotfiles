@@ -8,6 +8,7 @@
 : ${INPUTRC=~/.inputrc}
 
 bash_start_time=$(date +%s)
+
 bash_uptime() {
     echo "$(($(date +%s)-${bash_start_time})) seconds"
 }

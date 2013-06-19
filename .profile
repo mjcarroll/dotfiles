@@ -50,10 +50,4 @@ export IPYTHONDIR
 [ -e "${HOME}/.profile-private" ] && . "${HOME}/.profile-private"
 [ -e "${HOME}/.profile-local" ] && . "${HOME}/.profile-local"
 
-# Application configuration
-EDITOR="editor" && export EDITOR
-VISUAL="${EDITOR}" && export VISUAL
-ALTERNATE_EDITOR="${EDITOR}" && export ALTERNATE_EDITOR
-[ $(which less) ] && PAGER="$(which less)" && export PAGER
-
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
