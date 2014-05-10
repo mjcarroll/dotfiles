@@ -1,4 +1,4 @@
-colorscheme ir_black
+colorscheme solarized 
 set background=dark
 
 if has("gui_running")

@@ -1,4 +1,3 @@
-[uet your user tokens as environment variables, such as ~/.secrets
 # See the README for examples.
 [color]
   ui = true
@@ -125,3 +124,6 @@
   enabled = true
 [include]
   path = .gitconfig.user
+[user]
+	email = carroll.michael@gmail.com
+	name = Michael Carroll

@@ -1,5 +1,5 @@
 let g:lightline = {
-    \ 'colorscheme': 'landscape',
+    \ 'colorscheme': 'solarized',
     \ 'mode_map': { 'c': 'NORMAL' },
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
