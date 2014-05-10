@@ -7,6 +7,12 @@ if has("gui_running")
 
   set lines=60
   set columns=190
+  
+  if has("gui_gtk2")
+    set guifont=Ubuntu\ Mono\ 12
+  else
+    set guifont=Ubuntu\ Mono:h17
+  endif
 else
   let g:CSApprox_loaded = 1
 endif
