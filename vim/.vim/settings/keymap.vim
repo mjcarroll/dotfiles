@@ -49,6 +49,9 @@ nnoremap <silent> <C-j> <C-w>j
 
 map <silent> ,gz <C-w>o
 
+vnoremap < <gv
+vnoremap > >gv
+
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> ss <C-w>s
 
