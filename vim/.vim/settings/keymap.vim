@@ -52,6 +52,8 @@ map <silent> ,gz <C-w>o
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> ss <C-w>s
 
+" (v)im (r)eload
+nmap <silent> ,vr :so %<CR>
 nmap <silent> // :nohlsearch<CR>
 noremap ,hl :set hlsearch! hlsearch?<CR>
 

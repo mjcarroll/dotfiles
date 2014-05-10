@@ -9,7 +9,7 @@ if has("gui_running")
   set columns=190
   
   if has("gui_gtk2")
-    set guifont=Ubuntu\ Mono\ 12
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
   else
     set guifont=Ubuntu\ Mono:h17
   endif
