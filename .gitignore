@@ -1,9 +1,6 @@
-.ssh/environment
-.ssh/id_rsa
-.ssh/id_rsa_pub
-.rosrc-private
-.rosrc-local
-.bashrc-private
-.bashrc-local
-.config-base/ipython/profile_default/db
-.config-base/ipython/profile_default/security
+.ssh/*
+.*-private
+.*-local
+vim/.vim/bundle
+vim/.vim/backups
+vim/.vim/sessions

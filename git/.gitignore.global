@@ -29,11 +29,25 @@
 # OS generated files #
 ######################
 .DS_Store*
+._*
+.Spotlight-V100
+.Trashes
 ehthumbs.db
 Icon?
 Thumbs.db
+Desktop.ini
 
 # Images #
 ##########
 *.jpg
 *.png
+
+# Tags #
+########
+TAGS
+tags
+
+# Vim #
+.*.sw[a-z]
+*.un~
+Session.vim
