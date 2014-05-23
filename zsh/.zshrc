@@ -52,7 +52,7 @@ DEFAULT_USER="carrollmj"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(colored-man colorize cp git tmux vi-mode fasd vagrant python pip debian extract command-not-found)
+plugins=(colored-man colorize cp git tmux fasd vagrant python pip debian extract command-not-found)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,4 +81,44 @@ export LANG=en_US.UTF-8
 if [[ -e ~/src/ansible/hacking/env-setup ]]; then
   source ~/src/ansible/hacking/env-setup
 fi
+
+
+case $TERM in
+  rxvt*|xterm*)
+    bindkey "^[[7~" beginning-of-line # home
+    bindkey "^[[8~" beginning-of-line # end
+    bindkey "^[[3~" delete-char #del 
+    bindkey "^[[A" history-beginning-search-backward
+    bindkey "^[[B" history-beginning-search-forward
+    bindkey "^[Oc" forward-word 
+    bindkey "^[Od" backward-word 
+    bindkey "^H" backward-kill-word
+    bindkey "^[[3^" kill-word
+    ;;
+esac
+
+bindkey "^R" history-incremental-pattern-search-backward
+bindkey "^S" history-incremental-pattern-search-forward
+
+setopt extendedGlob
+autoload -U zargs
+autoload -U zmv
+
+setopt promptsubst
+
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion:*:descriptions' format '%U%F{cyan}%d%f%u'
+
+setopt interactivecomments
+setopt hist_ignore_dups
+setopt hist_ignore_space
+
+alias ll='ls -lah'
+
 

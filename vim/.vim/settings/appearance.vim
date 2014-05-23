@@ -1,5 +1,6 @@
 colorscheme solarized 
 set background=dark
+set t_Co=256
 
 if has("gui_running")
   set t_Co=256

@@ -12,6 +12,8 @@ set autoread
 
 set hidden
 
+set mouse=a
+
 syntax on
 
 let mapleader=","

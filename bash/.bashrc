@@ -74,3 +74,5 @@ esac
 [ -e "${HOME}/.rosrc" ] \
     && . "${HOME}/.rosrc" \
     && log "loaded .rosrc"
+
+export TERM=xterm-256color
