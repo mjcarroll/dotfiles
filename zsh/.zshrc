@@ -121,4 +121,13 @@ setopt hist_ignore_space
 
 alias ll='ls -lah'
 
-
+if [ `whoami` != 'root' ]
+then
+  if [ -f ~/.ssh/id_rsa -a -f ~/.ssh/id_rsa ]; then
+    if which keychain &> /dev/null
+    then
+      keychain -q id_rsa
+      . ~/.keychain/${HOST}-sh
+    fi
+  fi
+fi
