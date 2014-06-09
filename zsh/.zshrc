@@ -78,15 +78,12 @@ export LANG=en_US.UTF-8
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 #
 
-if [[ -e ~/src/ansible/hacking/env-setup ]]; then
-  source ~/src/ansible/hacking/env-setup
-fi
-
+source /opt/ros/indigo/setup.zsh
 
 case $TERM in
   rxvt*|xterm*)
     bindkey "^[[7~" beginning-of-line # home
-    bindkey "^[[8~" beginning-of-line # end
+    bindkey "^[[8~" end-of-line # end
     bindkey "^[[3~" delete-char #del 
     bindkey "^[[A" history-beginning-search-backward
     bindkey "^[[B" history-beginning-search-forward
