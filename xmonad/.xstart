@@ -1,12 +1,12 @@
 #!/bin/bash
 
-killall -q devmon
-killall -q gpg-agent
-killall -q ssh-agent
-killall -q gnome-keyring-daemon
-killall -q gnome-settings-daemon
-killall -q xbindkeys
-killall -q nm-applet
+#killall -q devmon
+#killall -q gpg-agent
+#killall -q ssh-agent
+#killall -q gnome-keyring-daemon
+#killall -q gnome-settings-daemon
+#killall -q xbindkeys
+#killall -q nm-applet
 
 # Launch a new dbus-session if not already running
 dbuslaunch="`which dbus-launch 2>/dev/null`"
@@ -16,12 +16,12 @@ dbuslaunch="`which dbus-launch 2>/dev/null`"
     && eval `$dbuslaunch --sh-syntax --exit-with-session`
 
 # Load gtk2 style settings
-[ -f "${HOME}/.gtkrc-2.0" ] \
-    && export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
+#[ -f "${HOME}/.gtkrc-2.0" ] \
+#    && export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
 
 # load Xresources
-[ -f "${HOME}/.Xresources" ] \
-    && xrdb "${HOME}/.Xresources"
+#[ -f "${HOME}/.Xresources" ] \
+#    && xrdb "${HOME}/.Xresources"
 
 # Devmon udev mounter (part of udevil)
 [ $(which devmon) ] \
@@ -33,7 +33,7 @@ xmodmap -e "add Control = Control_L"
 
 # Initialize gnome settings daemon
 if [ $(which gnome-settings-daemon) ]; then
-gnome-settings-daemon 2>/dev/null &
+  gnome-settings-daemon 2>/dev/null &
     (
         sleep 0.5
         if [ $(which gconftool-2) ]; then
@@ -56,17 +56,13 @@ fi
     && export `gnome-keyring-daemon --start`
 
 # Launch the network manager applet
-[ $(which nm-applet) ] \
-    && nm-applet --sm-disable &
+#[ $(which nm-applet) ] \
+#    && nm-applet --sm-disable &
 
-# Set the backbround color
-[ $(which bgset ) ] \
-    && bgset black &
-
-[ -e "${HOME}/.xstart-private" ] \
-    && . "${HOME}/.xstart-private"
+#[ -e "${HOME}/.xstart-private" ] \
+#    && . "${HOME}/.xstart-private"
 
 feh --bg-scale /usr/share/backgrounds/Forever_by_Shady_S.jpg
 trayer --edge top --align right --SetDockType true --SetPartialStrut false --expand true --transparent true --width 10 --tint 0x002b36 --height 20 --monitor 1 &
 
-exec /usr/bin/xmonad
+exec /usr/bin/xmonad &
