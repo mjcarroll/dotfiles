@@ -75,3 +75,8 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
+
+if [[ -e ${HOME}/.zprofile.local ]]; then
+  source ${HOME}/.zprofile.local
+fi
+
