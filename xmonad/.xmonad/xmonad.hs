@@ -84,6 +84,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_a),
     spawn "dmenu-launch")
 
+  -- Launch dmenu
+  , ((modMask, xK_s),
+    spawn "ssh-launch")
+
   -- Launch full dmenu
   , ((modMask .|. shiftMask, xK_a),
     spawn "dmenu_run")
