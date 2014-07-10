@@ -14,6 +14,5 @@ Config {
 , sepChar = "%"
 , alignSep = "}{"
 , template = "%StdinReader%}{BAT: %battery% · %cpu% · %memory% · %swap% · %date%"
-, allDesktops = True
 }
 

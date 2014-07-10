@@ -75,6 +75,7 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
+export ANSIBLE_NOCOWS=1
 
 if [[ -e ${HOME}/.zprofile.local ]]; then
   source ${HOME}/.zprofile.local
