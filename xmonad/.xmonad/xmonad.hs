@@ -42,21 +42,21 @@ myLayout = avoidStruts (
 
 myLayouts = myLayout
 
-myFocusColor = "#657b83"
-textColor = "#c0c0a0"
+myFocusColor = "#268bd2"
+textColor = "#657b83"
 lightTextColor = "#fffff0"
-lightBackgroundColor = "#456030"
-myUrgentColor = "#ffc000"
-myNormalBorderColor = "#304520"
-myFocusedBorderColor = "#60ff45"
+lightBackgroundColor = "#002b36"
+myUrgentColor = "#b58900"
+myNormalBorderColor = "#93a1a1"
+myFocusedBorderColor = "#2aa198"
 myFont = "xft:DejaVu Sans:size=10"
 
 myTheme = defaultTheme
     { activeColor = lightBackgroundColor
     , inactiveColor = myNormalBorderColor
-    , urgentColor = lightBackgroundColor
+    , urgentColor = myUrgentColor 
     , activeBorderColor = textColor
-    , inactiveTextColor = textColor
+    , inactiveTextColor = lightTextColor
     , urgentTextColor = textColor
     , inactiveBorderColor = lightBackgroundColor
     , urgentBorderColor = myUrgentColor
@@ -83,6 +83,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Launch dmenu
   , ((modMask, xK_a),
     spawn "dmenu-launch")
+
+  -- Launch dmenu
+  , ((modMask, xK_s),
+    spawn "ssh-launch")
 
   -- Launch full dmenu
   , ((modMask .|. shiftMask, xK_a),
@@ -204,8 +208,8 @@ main = do
   xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
   xmonad $ withUrgencyHook NoUrgencyHook $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP
-        { ppCurrent = xmobarColor myFocusColor ""
-        , ppVisible = xmobarColor lightTextColor ""
+        { ppCurrent = xmobarColor lightTextColor ""
+        , ppVisible = xmobarColor myFocusColor ""
         , ppHiddenNoWindows = xmobarColor lightBackgroundColor ""
         , ppUrgent = xmobarColor myUrgentColor ""
         , ppSep = " · "
@@ -221,7 +225,7 @@ main = do
 ------------------------------------------------------------------------
 -- Combine it all together
 -- A structure containing your configuration settings, overriding
--- fields in the default config. Any you don't override, will
+-- fields ,xin the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
 -- 
 -- No need to modify this.
