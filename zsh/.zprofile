@@ -64,6 +64,9 @@ fi
 #
 # Temporary Files
 #
+#
+
+export PATH=${HOME}/bin:${PATH}
 
 if [[ ! -d "$TMPDIR" ]]; then
   export TMPDIR="/tmp/$USER"
