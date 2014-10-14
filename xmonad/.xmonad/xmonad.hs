@@ -1,6 +1,9 @@
 import System.IO
 import System.Exit
 import XMonad
+
+import XMonad.Actions.PhysicalScreens
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -54,7 +57,7 @@ myFont = "xft:DejaVu Sans:size=10"
 myTheme = defaultTheme
     { activeColor = lightBackgroundColor
     , inactiveColor = myNormalBorderColor
-    , urgentColor = myUrgentColor 
+    , urgentColor = myUrgentColor
     , activeBorderColor = textColor
     , inactiveTextColor = lightTextColor
     , urgentTextColor = textColor
@@ -156,19 +159,21 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_period),
      sendMessage (IncMasterN (-1)))
 
-  -- Toggle the status bar gap.
-  -- TODO: update this binding with avoidStruts, ((modMask, xK_b),
-
   -- Quit xmonad.
   , ((modMask .|. shiftMask, xK_q),
      io (exitWith ExitSuccess))
+
+  --, ((modMask, xK_a), onPrevNeighbour W.view)
+  --, ((modMask, xK_o), onNextNeighbour W.view)
+  --, ((modMask .|. shiftMask, xK_a, onPrevNeighbour W.shift))
+  --, ((modMask .|. shiftMask, xK_o, onNextNeighbour W.shift))
 
   -- Restart xmonad.
   , ((modMask, xK_q),
      restart "xmonad" True)
   ]
   ++
- 
+
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
@@ -178,9 +183,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
   -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
-  [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+  [((m .|. modMask, key), f sc)
       | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+      , (f, m) <- [(viewScreen, 0), (sendToScreen, shiftMask)]]
 
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = False
@@ -190,15 +195,15 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- mod-button1, Set the window to floating mode and move by dragging
     ((modMask, button1),
      (\w -> focus w >> mouseMoveWindow w))
- 
+
     -- mod-button2, Raise the window to the top of the stack
     , ((modMask, button2),
        (\w -> focus w >> windows W.swapMaster))
- 
+
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modMask, button3),
        (\w -> focus w >> mouseResizeWindow w))
- 
+
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
   ]
 
@@ -220,14 +225,14 @@ main = do
       , manageHook = manageDocks <+> myManageHook
       , startupHook = setWMName "LG3D"
   }
- 
+
 
 ------------------------------------------------------------------------
 -- Combine it all together
 -- A structure containing your configuration settings, overriding
 -- fields ,xin the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
--- 
+--
 -- No need to modify this.
 --
 defaults = defaultConfig {
@@ -239,11 +244,11 @@ defaults = defaultConfig {
     workspaces = myWorkspaces,
     normalBorderColor = myNormalBorderColor,
     focusedBorderColor = myFocusedBorderColor,
- 
+
     -- key bindings
     keys = myKeys,
     mouseBindings = myMouseBindings,
- 
+
     -- hooks, layouts
     layoutHook = smartBorders $ myLayouts,
     manageHook = myManageHook,
