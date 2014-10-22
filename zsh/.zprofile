@@ -66,7 +66,7 @@ fi
 #
 #
 
-export PATH=${HOME}/bin:${PATH}
+export PATH=/usr/local/bin:${HOME}/bin:${HOME}/x-tools/arm-bare_newlib_cortex_m3_nommu-eabi/bin:${PATH}
 
 if [[ ! -d "$TMPDIR" ]]; then
   export TMPDIR="/tmp/$USER"
