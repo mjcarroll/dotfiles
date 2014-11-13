@@ -45,6 +45,9 @@ fi
 [ $(which gnome-sound-applet) ] \
     && gnome-sound-applet &
 
+[ $(which parcellite) ] \
+   && parcellite -d &
+
 #[ -e "${HOME}/.xstart-private" ] \
 #    && . "${HOME}/.xstart-private"
 
