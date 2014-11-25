@@ -19,19 +19,11 @@ xmodmap -e "add Control = Control_L"
 # Initialize gnome settings daemon
 if [ $(which gnome-settings-daemon) ]; then
   gnome-settings-daemon 2>/dev/null &
-  sleep 0.5
-  if [ $(which gconftool-2) ]; then
-    gconftool-2 -t bool -s /apps/nautilus/preferences/show_desktop false
-    gconftool-2 -t bool -s /desktop/gnome/volume_manager/automount_drives true
-    gconftool-2 -t bool -s /apps/gnome_settings_daemon/screensaver/start_screensaver false
-    gconftool-2 -t bool -s /apps/gnome-keyring/daemon-components/ssh true
-    gconftool-2 -t bool -s /desktop/gnome/background/draw_background false
-    gconftool-2 -t bool -s /apps/gnome_settings_daemon/plugins/background/active false
-    gconftool-2 -t bool -s /apps/gnome_settings_daemon/plugins/ubuntuone/active false
-    gconftool-2 -t bool -s /apps/gnome_settings_daemon/plugins/xrandr/active false
-  fi
   if [ $(which dconf) ]; then
     dconf write /org/gnome/settings-daemon/plugins/media-keys/active true
+    dconf write /org/gnome/desktop/background/draw-background false
+    dconf write /org/gnome/desktop/background/picture-options "none"
+    dconf write /org/gnome/desktop/background/show-desktop-icons false
   fi
 fi
 
@@ -46,7 +38,7 @@ fi
     && gnome-sound-applet &
 
 [ $(which parcellite) ] \
-   && parcellite -d &
+   && parcellite &
 
 #[ -e "${HOME}/.xstart-private" ] \
 #    && . "${HOME}/.xstart-private"
@@ -54,4 +46,4 @@ fi
 feh --bg-scale /usr/share/backgrounds/Forever_by_Shady_S.jpg
 trayer --edge top --align right --SetDockType true --SetPartialStrut false --expand true --transparent true --width 10 --tint 0x002b36 --height 20 --monitor 1 &
 
-dbus-launch --exit-with-session /usr/bin/xmonad
+#dbus-launch --exit-with-session /usr/bin/xmonad
