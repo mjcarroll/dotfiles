@@ -1,0 +1,8 @@
+---
+- hosts: all
+  sudo: yes 
+  vars:
+    user: carrollmj
+  tasks:
+  - include: tasks.yml
+  - include: tasks-leidos.yml

@@ -1,0 +1,71 @@
+---
+ - name: "{{ user }} apps and utils"
+   apt: name={{ item }}
+   with_items:
+       - vim
+       - zsh
+       - ncurses-term
+       - tig
+       - keychain
+       - ack-grep
+       - xstow
+       # The following are for youcompleteme
+       - cmake
+       - build-essential
+       - python-dev
+
+ - name: "{{ user }} gui apps and utils"
+   apt: name={{ item }}
+   with_items:
+       - vim
+       - vim-gnome
+       - rxvt-unicode-256color
+       - parcellite
+       - xmonad
+       - xmobar
+       - trayer
+       - feh
+
+ - name: Setup {{ user }} shell
+   user: name={{ user }}
+         comment="Michael J. Carroll"
+         shell=/bin/zsh
+
+# - name: Add pubkey to authorized_key
+#   authorized_key: user=carrollmj
+#       key="{{ item }}"
+#   with_file:
+#        - carrollmj.pub
+
+ - name: Clone dotfiles
+   sudo_user: "{{ user }}"
+   git: repo=https://github.com/mjcarroll/dotfiles
+     dest=/home/{{ user }}/src/dotfiles
+     version=master
+     recursive=yes
+   tags: dotfiles
+
+ - name: Remove existing files
+   file: dest=/home/{{ user }}/{{ item }} state=absent
+   with_items:
+       - .bashrc
+       - .bash_logout
+
+ - name: Remove broken links
+   sudo_user: "{{ user }}"
+   shell: find -L /home/{{ user }} -type l -delete
+   tags: dotfiles
+
+ - name: Unstow
+   sudo_user: "{{ user }}"
+   shell: cd /home/{{ user }}/src/dotfiles && xstow -t /home/{{ user }} bash fonts git ros shell tmux urxvt zsh vim xmonad
+   tags: dotfiles
+
+ - name: Bundle install
+   command: vim +BundleInstall +qall
+
+ - name: Compile YouCompleteMe
+   shell: cd /home/{{ user }}/.vim/bundle/YouCompleteMe/ && ./install.sh --clang-completer
+   args:
+     creates: /home/{{ user }}/.vim/bundle/YouCompleteMe/third_party/ycmd/ycm_core.so
+
