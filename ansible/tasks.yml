@@ -1,6 +1,7 @@
 ---
  - name: "{{ user }} apps and utils"
    apt: name={{ item }}
+   sudo: yes
    with_items:
        - vim
        - zsh
@@ -13,9 +14,11 @@
        - cmake
        - build-essential
        - python-dev
+       - python-apt
 
  - name: "{{ user }} gui apps and utils"
    apt: name={{ item }}
+   sudo: yes
    with_items:
        - vim
        - vim-gnome
@@ -26,16 +29,29 @@
        - trayer
        - feh
 
+ - name: Add neovim repo
+   sudo: yes
+   apt_repository:
+     repo='ppa:neovim-ppa/unstable'
+     state=present
+
+ - name: Install Neovim
+   sudo: yes
+   apt: name={{ item }}
+   with_items:
+     - neovim
+     - xsel
+     - python-dev
+     - python-pip
+
+ - name: Install neovim python support
+   sudo_user: "{{ user }}"
+   command: pip install --user neovim
+
  - name: Setup {{ user }} shell
    user: name={{ user }}
          comment="Michael J. Carroll"
          shell=/bin/zsh
-
-# - name: Add pubkey to authorized_key
-#   authorized_key: user=carrollmj
-#       key="{{ item }}"
-#   with_file:
-#        - carrollmj.pub
 
  - name: Clone dotfiles
    sudo_user: "{{ user }}"
