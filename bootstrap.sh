@@ -2,7 +2,7 @@
 
 if [ ! -e ~/src/dotfiles ]; then
 sudo apt-get update
-sudo apt-get install -y software-properties-common
+sudo apt-get install -y software-properties-common git
 sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install -y ansible
