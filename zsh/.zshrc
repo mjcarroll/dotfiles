@@ -14,5 +14,8 @@ if [[ -e "${HOME}/.zshrc.local" ]]; then
   source "${HOME}/.zshrc.local" 
 fi
 
+
 alias open='xdg-open'
 setopt nonomatch
+setopt clobber
+unsetopt SHARE_HISTORY

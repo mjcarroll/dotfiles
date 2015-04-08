@@ -25,7 +25,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import Data.Ratio ((%))
 
-myTerminal = "/usr/bin/urxvt"
+myTerminal = "/usr/local/bin/terminology"
 
 myWorkspaces= map show [1..9]
 
