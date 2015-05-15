@@ -81,6 +81,8 @@ fi
 
 export ANSIBLE_NOCOWS=1
 
+export LD_LIBRARY_PATH=/usr/local/lib
+
 if [[ -e ${HOME}/.zprofile.local ]]; then
   source ${HOME}/.zprofile.local
 fi
