@@ -24,10 +24,8 @@
        - vim-gnome
        - rxvt-unicode-256color
        - parcellite
-       - xmonad
-       - xmobar
-       - trayer
        - feh
+       - i3
 
  - name: Add neovim repo
    sudo: yes
