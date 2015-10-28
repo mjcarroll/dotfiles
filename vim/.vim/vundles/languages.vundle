@@ -16,4 +16,4 @@ Bundle "sirver/ultisnips"
 Bundle "honza/vim-snippets"
 " Fix core yaml syntax
 Bundle "stephpy/vim-yaml"
-Bundle "mjcarroll/vim-ros"
+Bundle "taketwo/vim-ros"

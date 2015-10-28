@@ -70,5 +70,7 @@ set scrolloff=9
 set sidescrolloff=15
 set sidescroll=1
 
+let g:agprg="ack-grep --column"
+
 so ~/.vim/settings.vim
 
